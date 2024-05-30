@@ -28,4 +28,4 @@ void calc(Func1 fx1, Func2 fx2, double& x1, double& x2, double& v1, double& v2, 
     v2 += (1.0 / 3.0 * k1_v2 + 2.0 / 3.0 * k2_v2);
 }
 
-#endif // RALSTON_HPP
+#endif 
