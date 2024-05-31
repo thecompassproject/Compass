@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include "ralston.hpp"
-#include "rk4.hpp"
+#include "ralstonC.hpp"
+#include "rk4C.hpp"
 
 class pendu {
 private:
