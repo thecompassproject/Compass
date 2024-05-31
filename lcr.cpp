@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include "rk4.hpp"
-#include "ralston.hpp"
+#include "rk4C.hpp"
+#include "ralstonC.hpp"
 class LCR {
 private:
     double L, C, R, Q, I,h;
