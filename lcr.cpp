@@ -40,8 +40,9 @@ double cha_wrapper(double A, double B,double Q1, double I1) {
         return I1;
     }
 
-void kart(double initialTime, double& finalTime, int& n, double& I, double& Q) {
-   
+void kart() {
+   double initialTime, finalTime, I, Q;
+   int n;
     std::cout << "\nEnter the number of times you would like to run the loop: ";
     std::cin >> n;
     std::cout << "\nEnter the final time (micro seconds): ";
@@ -68,7 +69,7 @@ void kart(double initialTime, double& finalTime, int& n, double& I, double& Q) {
            double B = 0;
     
     for (double t = initialTime; t <= finalTime; t += h) {
-   // steps calculating slope is replaced by function call from included header file
+   // steps calculating is replaced by function call from included header file
 calc1(
         std::bind(&LCR::cha_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
         std::bind(&LCR::f_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
@@ -81,8 +82,6 @@ calc1(
 
 int main() {
     LCR under;
-    double finalTime, I, Q;
-    int n;
-    under.kart(0.0, finalTime, n, I, Q);
+    under.kart();
     return 0;
 }
