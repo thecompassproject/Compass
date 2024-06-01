@@ -31,7 +31,7 @@ else {
         }
         std::cout << "\n###########################";
     }
-    // Wrapper function to match the required signature
+    // Wrapper function to match the required header function
 double f_wrapper(double A, double B,double Q1, double I1) {
         return -(((Q1 / C) + (R * I1)) / L);
     }
