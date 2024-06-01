@@ -1,6 +1,6 @@
 #include <iostream>
-#include "euler.hpp"
-#include "fn.hpp"
+#include "euler.h"
+#include "fn.h"
 using namespace std;
 
 class testcode{
