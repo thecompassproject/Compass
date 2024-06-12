@@ -1,13 +1,12 @@
 #include<iostream>
 #include<fstream>
 #include<cmath>
-#include "Fn.hpp"
-#include "Euler.hpp"
-#include "ralston.hpp"
-#include "rk4.hpp"
+#include "EulerC.hpp"
+#include "ralstonC.hpp"
+#include "rk4C.hpp"
 class proj{
 private:
-double  V0,th,c,m,g,p,r,q,a,ax,ay;
+double  V0,th,c,m,g,p,r,ax,ay,val;
 public:
 proj(){
     std::cout<<"Enter the initial velocity::";
@@ -22,22 +21,31 @@ proj(){
     
     for(double i =0 ;i<1;i++){
     if(c==0){
-       q = 0; break; }
-    else{
-        q = 1; }
+       m = 1;
+       break; }
     std::cout<<"The mass of the projectile::";
     std::cin>>m;
      p = 1.22;
      r = 0.2; 
-    a = 0.0;
     }
- }
-double S(double a , double b, double c){
-    return c ;
+ 
+        std::cout<<"::For numerical Method ::\n";
+        std::cout<<"::    1 for Euler      ::\n";
+        std::cout<<"::   2 for Ralston     ::\n";
+        std::cout<<":: 3 for Runge-Kutta   ::\n";
+        std::cout<<"::Enter the value selected from above::\n";
+        std::cin>>val;     
+
 }
-double A(double V){
-    return g - (((p*4*atan(1)*c*r*r)/(2*m))*V*V) ;
+
+double S(double X1,double Y1,double Vx1,double Vy1){
+      return  -(((p*4*atan(1)*c*r*r)/(2*m))*Vx1*Vx1) ;
 }
+
+double A(double X11,double Y11,double Vx11,double Vy11){
+    return  g - (((p*4*atan(1)*c*r*r)/(2*m))*Vy11*Vy11) ;
+}
+
 void ND(){
     std::ofstream out("sam.dat");
     double X0 = 0.0;
@@ -49,19 +57,38 @@ void ND(){
     double h = 0.001; 
 for(double t=0 ;t<100 ;t+=h){
     out<<X0<<"  "<<Y0<<"\n"; 
-    ax = q*(A(Vx) - g);
-    ay = A(Vy);
-    fn(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),Vx,ax,a,h);
-    fn(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),Vy,ay,a,h);
-    fn(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),X0,Vx,a,h);
-    fn(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),Y0,Vy,a,h);
+  
+    
+    if(val == 1.0){
+   calc4(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+        std::bind(&proj::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+        X0, Y0, Vx, Vy, h);
+    }
+    
+    else if(val == 2.0){
+     calc(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+        std::bind(&proj::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+        X0, Y0, Vx, Vy, h);}
+    
+    else if(val == 3.0){
+     calc1(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+        std::bind(&proj::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+        X0, Y0, Vx, Vy, h);}
+    
+    else{
+     std::cout<<"ERROR !!Not Any Method!!\n";    
+    break;
+   }
+    
     if(Y0<0){
        break ;
      }
     }    
   }
-}s;
+};
+
 int main(){
+proj s;
 s.ND();
 return 0;
 }
