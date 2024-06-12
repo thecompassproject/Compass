@@ -1,7 +1,6 @@
 #include<iostream>
 #include<fstream>
 #include<cmath>
-#include "FnC3.hpp"
 #include "EulerC3.hpp"
 #include "rk4C3.hpp"
 class chaos{
@@ -16,9 +15,8 @@ std::cin>>x>>y>>z;
  sig = 10 ;
      std::cout<<"::For numerical Method ::\n";
      std::cout<<"::    1 for Euler      ::\n";
-     std::cout<<"::     2 for Fn        ::\n";
-     std::cout<<"::   3 for Ralston     ::\n";
-     std::cout<<":: 4 for Runge-Kutta   ::\n";
+     std::cout<<"::   2 for Ralston     ::\n";
+     std::cout<<":: 3 for Runge-Kutta   ::\n";
      std::cout<<"::Enter the value selected from above::\n";
      std::cin>>val;
 
@@ -52,19 +50,14 @@ euler3(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2,
       A, B, C, x, y, z, h);
 }
 
-else if(val == 2.0){
-fn3(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
-      std::bind(&chaos::fy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
-      std::bind(&chaos::fz, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
-      A, B, C, x, y, z, h);}
 
-else if(val == 3.0){
+else if(val == 2.0){
 ralston3(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fz, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       A, B, C, x, y, z, h);}
 
-else if(val == 4.0){
+else if(val == 3.0){
 rk43(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fz, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
