@@ -78,5 +78,18 @@ for(double t=0 ;t<100 ;t+=h){
        break ;
      }
     }    
-  }
+/*   // Plot the data using gnuplot
+        FILE* gnuplotPipe = popen("gnuplot -persistent", "w");
+        if (!gnuplotPipe) {
+            std::cerr << "Error opening pipe to gnuplot" << std::endl;
+            return;
+        }
+
+        fprintf(gnuplotPipe, "set title 'Projectile Trajectory'\n");
+        fprintf(gnuplotPipe, "set xlabel 'X Position (m)'\n");
+        fprintf(gnuplotPipe, "set ylabel 'Y Position (m)'\n");
+        fprintf(gnuplotPipe, "plot 'sam.dat' using 1:2 with lines title 'Trajectory'\n");
+
+     */  
+}
 };
