@@ -13,17 +13,17 @@
 #include "ralstonC3.hpp"
 #include "rk4C3.hpp"
 #include "EulerC3.hpp"
-#include "proj.hpp"             //
-#include "field.hpp"           //
+#include "Projectile.hpp"             //
+#include "Charged_Particle_EM.hpp"           //
 #include "double_pendulum.hpp"//
-#include "LCR.hpp"           //
+#include "LCR_Oscillations.hpp"           //
 #include "drag_queen.hpp"   //
-#include "chaos.hpp"       //
-#include "peace.hpp"      //
-#include "fourier.hpp"   //
-#include "Fitit.hpp"    //
-#include "Quad.hpp"    //
-#include "kick.hpp"   //
+#include "chaos_in_convection.hpp"       //
+#include "Data_Handling.hpp"      //
+#include "fourier_Sqr_Waves.hpp"   //
+#include "Least_Sqr_Fitting.hpp"    //
+#include "Quadratic.hpp"    //
+#include "Superposition_Waves.hpp"   //
 class Master{
 private:   
 int times,rply,nNn = 12;
