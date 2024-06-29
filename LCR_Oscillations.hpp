@@ -48,6 +48,7 @@ double cha_wrapper(double A, double B,double Q1, double I1) {
 
 void kart() {
     double initialTime, finalTime, I, Q;
+    initialTime = 0.0;
     int n;
     std::cout << "\nEnter the number of times you would like to run the loop: ";
     std::cin >> n;
