@@ -12,7 +12,8 @@ public:
         std::cin >> o11 >> o22;
         o11 = o11 * (M_PI / 180);
         o22 = o22 * (M_PI / 180);
-        g = 9.8;
+        std::cout<<"Enter the Acceleration due to gravity:\n";
+        std::cin>>g
         std::cout<<"::For numerical Method ::\n";
         std::cout<<"::    1 for Euler      ::\n";
         std::cout<<"::   2 for Ralston     ::\n";
