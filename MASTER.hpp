@@ -15,12 +15,12 @@
 #include "EulerC3.hpp"
 #include "Projectile.hpp"             //
 #include "Charged_Particle_EM.hpp"           //
-#include "double_pendulum.hpp"//
+#include "Double_Pendulum.hpp"//
 #include "LCR_Oscillations.hpp"           //
-#include "drag_queen.hpp"   //
-#include "chaos_in_convection.hpp"       //
+#include "Drag_Queen.hpp"   //
+#include "Chaos_In_Convection.hpp"       //
 #include "Data_Handling.hpp"      //
-#include "fourier_Sqr_Waves.hpp"   //
+#include "Fourier_Sqr_Waves.hpp"   //
 #include "Least_Sqr_Fitting.hpp"    //
 #include "Quadratic.hpp"    //
 #include "Superposition_Waves.hpp"   //
