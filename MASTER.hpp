@@ -31,7 +31,7 @@ double choice;
 
 public:
 void Slave(){
-for(times = 0; times<nNn; times ++){
+//for(times = 0; times<nNn; times ++){
 std::cout<<"Which problem would you like to run::\n";
 std::cout<<" 1.  -  for   -   projectile\n";
 std::cout<<" 2.  -  for   -   motion-of-charged-particle-in-EM-field\n";
@@ -111,18 +111,18 @@ queen.b();
 else{
 std::cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@\n";
 std::cout<<"NOT ANY TYPE ERROR !!!!!\n";
-break;
+//break;
 }     
+//std::cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@\n";
+//std::cout<<"Would like to run some other problem\n";
+//std::cout<<"yes(1) or no(0), Enter the number corresponding to yes or no \n";
+//std::cin>>rply;
+//std::cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@\n";
+//if(rply == 0){
+//break;     
+  //   }
+//std::cout<<"Turns left are :: "<< nNn - times - 1 <<"\n";
 std::cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@\n";
-std::cout<<"Would like to run some other problem\n";
-std::cout<<"yes(1) or no(0), Enter the number corresponding to yes or no \n";
-std::cin>>rply;
-std::cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@\n";
-if(rply == 0){
-break;     
-     }
-std::cout<<"Turns left are :: "<< nNn - times - 1 <<"\n";
-std::cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@\n";
-}      
+//}      
 }     
 };
