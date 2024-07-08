@@ -20,7 +20,9 @@ proj(){
     std::cout<<"The mass of the projectile::";
     std::cin>>m;
      p = 1.22;
-     r = 0.2; 
+    std::cout<<"Enter the radius of spherical projectile::\n";
+    std::cin>>r;    
+     //r = 0.2; 
     }
  
         std::cout<<"::For numerical Method ::\n";
