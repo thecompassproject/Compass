@@ -166,5 +166,5 @@ def algorithms(request):
         'o22': o22,
         'g': g
     }
-    template = loader.get_template('samreet.html')
+    template = loader.get_template('index.html')
     return HttpResponse(template.render(context, request))
