@@ -9,10 +9,17 @@
 <style>
   .bg-custom1 {
     background: #c1c6fc;
+    color:#000866;
   }
   .bg-custom2 {
     background:#000866;
-    color: #ffffff;
+    color: #c1c6fc;
+  }
+  .d-none{
+    display:none;
+  }
+  *{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 </style>
 
@@ -21,95 +28,245 @@
   <div class="container">
     
     <div class="d-flex justify-content-between bg-custom2 p-3">
-      <p class="h5 text">{{ result }} GUI for Teaching and Implementing Computational Physics Problems</p>
+      <p class="h5 text"> Open Source GUI for Teaching and Implementing Computational Physics Problems</p>
       <p class="h5 text"> IAPT NCICP 2024</p>
     </div>
     
     <form method="get" action="/algorithms">
     <div class="p-3 mb-2 bg-custom1 text-info-emphasis border">
 
-      <p class="h5">Select the program you want to run </p>
+      <p class="h5 ">Select the program you want to run </p>
       <div class="row">
         <div class="col-6">
           <div class="d-flex justify-content-between">
-            <select id="prog" class="form-select form-select-sm" aria-label="Small select example">
-              <option selected>Select program name</option>
+            <select name="prog_choice" ="{{ prog_choice }}" id="prog" class="form-select form-select-sm mb-3" onchange="perform()">
+              <option disabled selected value> Select program </option>
               <option value="1">Study of projectile motion</option>
               <option value="2">Study of LCR oscillations</option>
-              <option value="3">Study of motion of falling spherical body under the various effects of medium</option>
-              <option value="4">Study of phase trajectory of a double pendulum</option>
+              <option value="3">Study of phase trajectory of a double pendulum</option>
             </select>
         
-            <div class="col">    
-              <button type="button" class="btn btn-primary" onclick="action('prog')">Select</button>  
-            </div>
           </div>    
         </div>
       </div>
-  
-    <hr>
 
       <p class="h5">Select the numerical method you want to use </p>
       <div class="row">
         <div class="col-6">    
           <div class="d-flex justify-content-between">
-            <select id="method" class="form-select form-select-sm" aria-label="Small select example">
-              <option selected>Select numerical method</option>
+            <select name="val" value="{{ val }}" id="method" class="form-select form-select-sm mb-3" aria-label="Small select example">
+              <option disabled selected value> Select method </option>
               <option value="1">Runge-Kutta 4th Order</option>
               <option value="2">Euler Method</option>
-              <option value="3">Ralston Method</option>
+              <option value="3"">Ralston Method</option>
             </select>
-            <button type="button" class="btn btn-primary" onclick="action('method')">Select</button>
           </div>
         </div>
       </div>
+
+    <div id = "div-projectile" class = "d-none">
+      <p class="h3">Projectile Motion </p>
+      
+      <p class="h5">Mass of the projectile </p>
+      <div class="row">
+        <div class="col-6">
+          <input name="m" value="{{ m }}" class="form-control mb-3" type="text" placeholder="type mass" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Radius of the projectile </p>
+      <div class="row">
+        <div class="col-6">
+          <input name="r" value="{{ r }}" class="form-control mb-3" type="text" placeholder="type radius" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Release angle of the projectile </p>
+      <div class="row">
+        <div class="col-6">
+          <input name="th" value="{{ th }}" class="form-control mb-3" type="text" placeholder="type angle" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Initial velocity of the projectile</p>
+      <div class="row">
+        <div class="col-6">
+          <input name="V0" value="{{ V0 }}" class="form-control mb-3" type="text" placeholder="type velocity" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Drag coefficient of the medium</p>
+      <div class="row">
+        <div class="col-6">
+          <input name="c" value="{{ c }}" class="form-control mb-3" type="text" placeholder="type drag coefficient" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5 text"> {{ result }} </p>
+
+    </div>
+
+    <div id = "div-lcr" class = "d-none">
+      <p class="h3">LCR Oscillations</p>
     
-    <hr>
+      <p class="h5">Inductance </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "L" value = "{{ L }}" class="form-control mb-3" type="text" placeholder="type inductance" aria-label="default input example">
+        </div>
+      </div>
+      
+      <p class="h5">Capacitance </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "C" value = "{{ C }}" class="form-control mb-3" type="text" placeholder="type capacitance" aria-label="default input example">
+        </div>
+      </div>
+      
+      <p class="h5">Resistance </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "R" value = "{{ R }}" class="form-control mb-3" type="text" placeholder="type resistance" aria-label="default input example">
+        </div>
+      </div>
+      
+      <p class="h5">Initial current </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "I" value = "{{ I }}" class="form-control mb-3" type="text" placeholder="type initial current" aria-label="default input example">
+        </div>
+      </div>
   
-    <p class="h3">Projectile Motion </p>
+      <p class="h5">Initial charge </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "Q" value = "{{ Q }}" class="form-control mb-3" type="text" placeholder="type initial charge" aria-label="default input example">
+        </div>
+      </div>
+          
+      <p class="h5">Final time</p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "finalTime" value = "{{ finalTime }}" class="form-control mb-3" type="text" placeholder="type final time" aria-label="default input example">
+        </div>
+      </div>
+  
+      <p class="h5">Number of loops </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "n" value = "{{ n }}" class="form-control mb-3" type="text" placeholder="type number of loops you want to run" aria-label="default input example">
+        </div>
+      </div>  
+      <p class="h5 text"> {{ result }} </p>
     
-    <p class="h5">mass of the projectile </p>
-    <div class="row">
-      <div class="col-6">
-        <input class="form-control" name="mass" type="text" placeholder="type mass" aria-label="default input example">
+    </div>
+
+
+    <div id = "div-pendulum" class = "d-none">
+      <p class="h3">Double Pendulum</p>
+
+      <p class="h5">Mass of first pendulum</p>
+      <div class="row">
+        <div class="col-6">    
+          <input name = "m1" value = "{{ m1 }}" class="form-control mb-3" type="text" placeholder="type mass of first pendulum" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Mass of second pendulum </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "m2" value = "{{ m2 }}" class="form-control mb-3" type="text" placeholder="type mass of second pendulum" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Length of first pendulum </p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "l1" value = "{{ l1 }}" class="form-control mb-3" type="text" placeholder="type length of first pendulum" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Length of second pendulum</p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "l2" value = "{{ l2 }}" class="form-control mb-3" type="text" placeholder="type length of second pendulum" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Release angle of first pendulum</p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "o11" value = "{{ o11 }}" class="form-control mb-3" type="text" placeholder="type release angle of first pendulum" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Release angle of second pendulum</p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "o22" value = "{{ o22 }}" class="form-control mb-3" type="text" placeholder="type release angle of second pendulum" aria-label="default input example">
+        </div>
+      </div>
+
+      <p class="h5">Acceleration due to gravity</p>
+      <div class="row">
+        <div class="col-6">
+          <input name = "g" value = "{{ g }}" class="form-control mb-3" type="text" placeholder="type value of acceleration due to gravity" aria-label="default input example">
+        </div>
       </div>
     </div>
 
-    <p class="h5">release angle of the projectile </p>
-    <div class="row">
-      <div class="col-6">
-        <input class="form-control" name="angle" type="text" placeholder="type angle" aria-label="default input example">
-      </div>
-    </div>
+    <button type="submit" class="btn btn-primary mt-3">Run</button>
+    <button type="button" onclick="resetForm()" class="btn btn-primary mt-3">Clear</button>
 
-    <p class="h5">initial velocity of the projectile</p>
-    <div class="row">
-      <div class="col-6">
-        <input class="form-control" name="velocity" type="text" placeholder="type velocity" aria-label="default input example">
-      </div>
-    </div>
-
-    <p class="h5">drag coefficient of the medium</p>
-    <div class="row">
-      <div class="col-6">
-        <input class="form-control" name="drag" type="text" placeholder="type drag coefficient" aria-label="default input example">
-      </div>
-    </div>  
-    
-    <hr>
-
-    <button type="submit" class="btn btn-primary">Run</button>
   </div>
 </form>
-  </div>
+
+
+</div>
 </body>
 
+
 <script>
-  function action(selectid){
-    const program=document.getElementById(selectid);
-    const selectedValue=program.value;
-    console.log(selectedValue);
+  function resetForm() {
+    window.location = window.location.pathname;
   }
+
+  function displayCondition(program){
+    const divProjectile = document.getElementById("div-projectile");
+    const divLCR = document.getElementById("div-lcr");
+    const divPendulum = document.getElementById("div-pendulum");
+    
+    if (program==1){
+      divProjectile.classList.remove("d-none");
+      divLCR.classList.add("d-none");
+      divPendulum.classList.add("d-none");
+
+    }
+    
+    else if(program==2){
+      divProjectile.classList.add("d-none");
+      divLCR.classList.remove("d-none");
+      divPendulum.classList.add("d-none");
+    }
+    
+    else if(program==3){
+      divProjectile.classList.add("d-none");
+      divLCR.classList.add("d-none");
+      divPendulum.classList.remove("d-none");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const program = urlParams.get('prog_choice');
+    displayCondition(program);
+  })
+
+  function perform(){
+    const program=document.getElementById("prog").value;
+    console.log(program);
+    displayCondition(program);
+  }  
 </script>
 
 </html> 

@@ -1,4 +1,5 @@
 venv
-website/build
+build
 ThirdPartyLib
 __pycache__
+*.dat

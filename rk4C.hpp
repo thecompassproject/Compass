@@ -1,7 +1,6 @@
-
-
-template<typename Func1, typename Func2>
-void calc1(Func1 fx1, Func2 fx2, double& x1, double& x2, double& v1, double& v2, double h) {
+template <typename Func1, typename Func2>
+void calc1(Func1 fx1, Func2 fx2, double &x1, double &x2, double &v1, double &v2, double h)
+{
     // Calculate k1 for x1 and x2
     double k1_x1 = h * v1;
     double k1_x2 = h * v2;
@@ -40,4 +39,3 @@ void calc1(Func1 fx1, Func2 fx2, double& x1, double& x2, double& v1, double& v2,
     v1 += (1.0 / 6.0 * k1_v1 + 1.0 / 3.0 * k2_v1 + 1.0 / 3.0 * k3_v1 + 1.0 / 6.0 * k4_v1);
     v2 += (1.0 / 6.0 * k1_v2 + 1.0 / 3.0 * k2_v2 + 1.0 / 3.0 * k3_v2 + 1.0 / 6.0 * k4_v2);
 }
-
