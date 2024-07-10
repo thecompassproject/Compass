@@ -70,8 +70,14 @@ break;
         }
     out.close();
 
-        // Plot the data using gnuplot
-        FILE* gnuplotPipe = popen("gnuplot -persistent", "w");
+    // Important if building for both Unix and Windows OS
+    // Plot the data using gnuplot
+        #ifdef _WIN32
+            FILE* gnuplotPipe = _popen("gnuplot -persistent", "w");
+        #else
+            FILE* gnuplotPipe = popen("gnuplot -persistent", "w");
+        #endif
+        
         if (!gnuplotPipe) {
             std::cerr << "Error opening pipe to gnuplot" << std::endl;
             return;
