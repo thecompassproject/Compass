@@ -20,7 +20,7 @@ for (x = 0; x < n; x++){
 
 else{
     int size = 40;
-    char name[size];
+    char* name = new char[size];
     std::cout<<"enter the name of data file along with the extention::::";
     std::cin>>name;
     std::ifstream inputFile(name);

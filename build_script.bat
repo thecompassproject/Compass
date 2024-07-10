@@ -3,4 +3,5 @@ cd build
 cmake ../
 cmake --build .
 cd ..
-move build website
+rmdir /S/Q "website/build"
+move /Y build website
