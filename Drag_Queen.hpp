@@ -37,7 +37,7 @@ float yoko(double A, double x1 , double B1){
 }
 
 void b() { 
-    for(double at = 0.0 ; at < 1 ; at ++){
+    for(double at = 0.0 ; at < 1.0 ; at ++){
     double _a;
     double h = 0.15 ; 
     A = 0; B = 0;
