@@ -1,9 +1,9 @@
 class drag{
 private:
-    float _r,_p, _g, _m, _c,_mu,_val,_x,_v;
+    double _r,_p, _g, _m, _c,_mu,_val,_x,_v;
     double A,B;
 public:
-string input(double r,double p , double g, double m, double mu , double c , double val){
+string input(double r,double p , double g, double m, double mu , double c , double x , double v,double val){
     /*std::cout<< "Make sure the parameters should be in equivalent units\n";
     std::cout<< "\nEnter the radius of the sphere:::";
     std::cin>>r;
@@ -23,7 +23,9 @@ _r = r; _p = p;
 _g = g; _m = m; 
 _c = c; _mu = mu; 
 _val = val;
-     
+_x = x;
+_v = v;
+    
 }
 
 float ono(double A,double v1,double B) {
@@ -34,10 +36,8 @@ float yoko(double A, double x1 , double B1){
     return B1 ;
 }
 
-void b(double x , double v) { 
+void b() { 
     double _a;
-    _x = x;
-    _v = v;
     double h = 0.15 ; 
     A = 0; B = 0;
     /*std::cout<< "\nEnter the initial value of Height:::";
