@@ -1,20 +1,25 @@
 class chaos{
 private:
-    double x,y,z,r,bt,sig,val;
+    double _x,_y,_z,r,bt,sig,_val;
 public:
-chaos(){
-std::cout<<"Enter the values of x, y and z::";
-std::cin>>x>>y>>z;
+string input(double x, double y, double z, double val){
+/*std::cout<<"Enter the values of x, y and z::";
+std::cin>>x>>y>>z;*/
  r = 28;  
  bt = 2.667; 
  sig = 10 ;
-     std::cout<<"::For numerical Method ::\n";
+     /*std::cout<<"::For numerical Method ::\n";
      std::cout<<"::    1 for Euler      ::\n";
      std::cout<<"::   2 for Ralston     ::\n";
      std::cout<<":: 3 for Runge-Kutta   ::\n";
      std::cout<<"::Enter the value selected from above::\n";
-     std::cin>>val;
+     std::cin>>val;*/
+_x = x;
+_y = y;
+_z = z;
+_val = val;
 
+     
 }
 
 double fx(double A,double B ,double C,double x1,double y1,double z1){
@@ -38,31 +43,31 @@ double A = 0.0;
 double B = 0.0;
 double C = 0.0;
 
-if(val == 1.0){
+if(_val == 1.0){
 euler3(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fz, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
-      A, B, C, x, y, z, h);
+      A, B, C, _x, _y, _z, h);
 }
 
-else if(val == 2.0){
+else if(_val == 2.0){
 ralston3(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fz, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
-      A, B, C, x, y, z, h);}
+      A, B, C, _x, _y, _z, h);}
 
-else if(val == 3.0){
+else if(_val == 3.0){
 rk43(std::bind(&chaos::fx, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
       std::bind(&chaos::fz, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
-      A, B, C, x, y, z, h);}
+      A, B, C, _x, _y, _z, h);}
 
 else{
-std::cout<<"ERROR !!Not any Method!!:: \n";     
+//std::cout<<"ERROR !!Not any Method!!:: \n";     
 break;
 }
 
-out<<x<<"  "<<y<<"  "<<z<<"\n";    
+out<<_x<<"  "<<_y<<"  "<<_z<<"\n";    
     }
 
 // Important if building for both Unix and Windows OS
