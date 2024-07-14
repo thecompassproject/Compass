@@ -1,6 +1,6 @@
 class drag{
 private:
-    double _r,_p, _g, _m, _c,_mu,_val,_x,_v;
+    double _r,_p, _g, _m, _c,_mu,_val,_x,_v,vol,den;
     double A,B;
 public:
 string input(double r,double p , double g, double m, double mu , double c , double x , double v,double val){
@@ -37,6 +37,7 @@ float yoko(double A, double x1 , double B1){
 }
 
 void b() { 
+    for(double at = 0.0 ; at < 1 ; at ++){
     double _a;
     double h = 0.15 ; 
     A = 0; B = 0;
@@ -44,6 +45,12 @@ void b() {
     std::cin>>x;
     std::cout<< "\nEnter the initial value of Velocity:::";
     std::cin>>v;*/  
+    vol = (4.0/3.0)*M_PI*_r*_r*_r;
+    den = _m/vol;
+    if(den <= _p){
+        std::cout<<"HEY, The values Entered Are'nt Practical:::\n";
+        break;
+    }
     std::ofstream out("drag.dat");
     for (double t = 0.0; t > -1; t += h){
         _a = ono(A,_v,B);
@@ -93,4 +100,5 @@ void b() {
         fprintf(gnuplotPipe, "replot 'drag.dat' using 1:3 with lines title 'Velocity'\n");
         fprintf(gnuplotPipe, "replot 'drag.dat' using 1:4 with lines title 'Acceleration'\n");
   }
+}
 };
