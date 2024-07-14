@@ -69,7 +69,7 @@ else if(_val == 3.0){
       _x, _y, _z, _vx, _vy, _vz, _h);}
 
 else {
-std::cout<<"ERROR !!Not Any Method!!\n";
+//std::cout<<"ERROR !!Not Any Method!!\n";
 break;
 }
             out << _x << "  " << _y << "  " << _z << "\n";
