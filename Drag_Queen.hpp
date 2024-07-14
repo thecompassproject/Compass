@@ -48,7 +48,8 @@ void b() {
     vol = (4.0/3.0)*M_PI*_r*_r*_r;
     den = _m/vol;
     if(den <= _p){
-        std::cout<<"HEY, The values Entered Are'nt Practical:::\n";
+        //std::cout<<"HEY, The values Entered Are'nt Practical:::\n";
+        return "Message: HEY, The values Entered Are'nt Practical";
         break;
     }
     std::ofstream out("drag.dat");
