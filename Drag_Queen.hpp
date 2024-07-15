@@ -52,6 +52,9 @@ void b() {
         return "Message: HEY, The values Entered Are'nt Practical";
         break;
     }
+    else{
+        return "Message: The Density of the body is More Than That of the medium";
+    }
     std::ofstream out("drag.dat");
     for (double t = 0.0; t > -1; t += h){
         _a = ono(A,_v,B);
