@@ -33,7 +33,9 @@ private:
 public:
   string Slave(double prog_choice, double val, double m, double r, double V0, double th, double c,
                double L, double C, double R, double initialTime, double finalTime, double I, double Q, double n,
-               double m1, double m2, double l1, double l2, double o11, double o22, double g,double p,double mu,double x,double v)
+               double m1, double m2, double l1, double l2, double o11, double o22, double g,double p,double mu,double x,double v,
+               double q,double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
+               double y , double z )
   {
     if (prog_choice == 1.0)
     {
@@ -57,6 +59,7 @@ public:
     else if (prog_choice == 4.0)
     {
       field f;
+      f.input(q,m,vx,vy,vz,Ex,Ey,Ez,Bx,By,Bz,val);
       f.solve();
     }
     else if (prog_choice == 5.0)
@@ -98,6 +101,7 @@ public:
     else if (prog_choice == 10.0)
     {
       chaos A;
+      A.input(x,y,z,val);
       A.sap();
     }
     else if (prog_choice == 11.0)
