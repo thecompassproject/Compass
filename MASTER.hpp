@@ -33,7 +33,7 @@ private:
 public:
   string Slave(double prog_choice, double val, double m, double r, double V0, double th, double c,
                double L, double C, double R, double initialTime, double finalTime, double I, double Q, double n,
-               double m1, double m2, double l1, double l2, double o11, double o22, double g)
+               double m1, double m2, double l1, double l2, double o11, double o22, double g,double p,double mu,double x,double v)
   {
     if (prog_choice == 1.0)
     {
@@ -103,7 +103,9 @@ public:
     else if (prog_choice == 11.0)
     {
       drag queen;
-      queen.b();
+      queen.input(r,p,g,m,mu,c,x,v,val) ;
+      string message = queen.b() ;
+      return message;
     }
     else
     {
