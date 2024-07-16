@@ -13,6 +13,7 @@ public:
         _l1 = l1;
         _l2 = l2;
         _g = g;
+        _val = val;
     }
     double ac1(double th1, double th2, double og1, double og2)
     {
