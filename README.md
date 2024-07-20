@@ -1,5 +1,5 @@
 # IAPT
-IAPT NCICP Project 
+## About the project
 
 ## Authors
 
