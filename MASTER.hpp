@@ -33,9 +33,9 @@ private:
 public:
   string Slave(double prog_choice, double val, double m, double r, double V0, double th, double c,
                double L, double C, double R, double initialTime, double finalTime, double I, double Q, double n,
-               double m1, double m2, double l1, double l2, double o11, double o22, double g,double p,double mu,double x,double v,
-               double q,double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
-               double y , double z )
+               double m1, double m2, double l1, double l2, double o11, double o22, double g,
+               double p, double mu, double x, double v,
+               double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz)
   {
     if (prog_choice == 1.0)
     {
@@ -55,14 +55,25 @@ public:
       double_pendulum d;
       d.input(m1, m2, l1, l2, o11, o22, g, val);
       d.yo();
+      return "";
     }
+
     else if (prog_choice == 4.0)
     {
-      field f;
-      f.input(q,m,vx,vy,vz,Ex,Ey,Ez,Bx,By,Bz,val);
-      f.solve();
+      drag queen;
+      queen.input(m, r, p, mu, c, g, val);
+      queen.b(x, v);
+      return "";
     }
+
     else if (prog_choice == 5.0)
+    {
+      field f;
+      f.input(q, m, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz, val);
+      f.solve();
+      return "";
+    }
+    else if (prog_choice == 6.0)
     {
       peace jude;
       jude.saman();
@@ -72,44 +83,37 @@ public:
       jude.romi();
       jude.dualipa();
     }
-    else if (prog_choice == 6.0)
+    else if (prog_choice == 7.0)
     {
       fourier series;
       series.input();
       series.calc();
     }
-    else if (prog_choice == 7.0)
+    else if (prog_choice == 8.0)
     {
       Fitit fi;
       fi.inp();
       fi.calc();
       fi.printit();
     } // this block is for adding more programs
-    else if (prog_choice == 8.0)
+    else if (prog_choice == 9.0)
     {
       Quad q;
       q.coeff();
       q.roots();
     }
-    else if (prog_choice == 9.0)
+    else if (prog_choice == 10.0)
     {
       kick stand;
       stand.up();
       stand.at_ease();
       stand.still();
     }
-    else if (prog_choice == 10.0)
-    {
-      chaos A;
-      A.input(x,y,z,val);
-      A.sap();
-    }
     else if (prog_choice == 11.0)
     {
-      drag queen;
-      queen.input(r,p,g,m,mu,c,x,v,val) ;
-      string message = queen.b() ;
-      return message;
+      chaos A;
+      A.input(x, y, z, val);
+      A.sap();
     }
     else
     {

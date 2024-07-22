@@ -7,12 +7,16 @@ using namespace std;
 
 string mainserver(double prog_choice, double val, double m, double r, double V0, double th, double c,
                   double L, double C, double R, double initialTime, double finalTime, double I, double Q, double n,
-                  double m1, double m2, double l1, double l2, double o11, double o22, double g)
+                  double m1, double m2, double l1, double l2, double o11, double o22, double g,
+                  double p, double mu, double x, double v,
+                  double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz)
 {
     Master Free;
     string response = Free.Slave(prog_choice, val, m, r, V0, th, c,
                                  L, C, R, initialTime, finalTime, I, Q, n,
-                                 m1, m2, l1, l2, o11, o22, g);
+                                 m1, m2, l1, l2, o11, o22, g,
+                                 p, mu, x, v,
+                                 q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz);
     return response;
 }
 

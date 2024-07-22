@@ -13,16 +13,14 @@ public:
         _R = R;
         _val = val;
 
-        if (pow(_R, 2) > (4 * _L) / (1000 * _C))
+        if (pow(_R, 2) > (4 * _L) / _C)
         {
             // std::cout << "\nThe oscillator is over-damped.";
             return "Message: The oscillator is over-damped.";
         }
 
-        else if (pow(_R, 2) < (4 * _L) / (1000 * _C))
+        else if (pow(_R, 2) < (4 * _L) / _C)
         {
-            cout << pow(_R, 2) << "\n";
-            cout << (4 * _L) / _C;
             return "Message: The oscillator is under-damped.";
         }
 
@@ -31,6 +29,7 @@ public:
             return "Message: The oscillator is critically-damped.";
         }
     }
+
     // Wrapper function to match the required signature
     double f_wrapper(double A, double B, double Q1, double I1)
     {

@@ -137,10 +137,97 @@ def algorithms(request):
     else:
         g = 0
 
+    p = request.GET.get('p')
+    if p is not None and len(p) > 0:
+        p = float(p)
+    else:
+        p = 0
+
+    mu = request.GET.get('mu')
+    if mu is not None and len(mu) > 0:
+        mu = float(mu)
+    else:
+        mu = 0
+
+    x = request.GET.get('x')
+    if x is not None and len(x) > 0:
+        x = float(x)
+    else:
+        x = 0
+
+    v = request.GET.get('v')
+    if v is not None and len(v) > 0:
+        v = float(v)
+    else:
+        v = 0
+
+    q = request.GET.get('q')
+    if q is not None and len(q) > 0:
+        q = float(q)
+    else:
+        q = 0
+
+    vx = request.GET.get('vx')
+    if vx is not None and len(vx) > 0:
+        vx = float(v)
+    else:
+        vx = 0
+
+    vy = request.GET.get('vy')
+    if vy is not None and len(vy) > 0:
+        vy = float(vy)
+    else:
+        vy = 0
+
+    vz = request.GET.get('vz')
+    if vz is not None and len(vz) > 0:
+        vz = float(vz)
+    else:
+        vz = 0
+
+    Ex = request.GET.get('Ex')
+    if Ex is not None and len(Ex) > 0:
+        Ex = float(Ex)
+    else:
+        Ex = 0
+
+    Ey = request.GET.get('Ey')
+    if Ey is not None and len(Ey) > 0:
+        Ey = float(Ey)
+    else:
+        Ey = 0
+
+    Ez = request.GET.get('Ez')
+    if Ez is not None and len(Ez) > 0:
+        Ez = float(Ez)
+    else:
+        Ez = 0
+
+    Bx = request.GET.get('Bx')
+    if Bx is not None and len(Bx) > 0:
+        Bx = float(Bx)
+    else:
+        Bx = 0
+
+    By = request.GET.get('By')
+    if By is not None and len(By) > 0:
+        By = float(By)
+    else:
+        By = 0
+
+    Bz = request.GET.get('Bz')
+    if Bz is not None and len(Bz) > 0:
+        Bz = float(Bz)
+    else:
+        Bz = 0
+
     # Get result from a CPP function
     result = cpp_function.run(prog_choice, val, m, r, V0, th, c,
                               L, C, R, initialTime, finalTime, I, Q, n,
-                              m1, m2, l1, l2, o11, o22, g)
+                              m1, m2, l1, l2, o11, o22, g,
+                              p, mu, x, v,
+                              q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz)
+
     context = {
         'result': result,
         'm': m,
@@ -164,7 +251,30 @@ def algorithms(request):
         'l2': l2,
         'o11': o11,
         'o22': o22,
-        'g': g
+        'g': g,
+        'p': p,
+        'mu': mu,
+        'x': x,
+        'v': v,
+        'q': q,
+        'vx': vx,
+        'vy': vy,
+        'vz': vz,
+        'Ex': Ex,
+        'Ey': Ey,
+        'Ez': Ez,
+        'Bx': Bx,
+        'By': By,
+        'Bz': Bz
     }
-    template = loader.get_template('index.html')
+
+    template = loader.get_template('gui.html')
+    return HttpResponse(template.render(context, request))
+
+
+def homePage(request):
+
+    context = {}
+
+    template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
