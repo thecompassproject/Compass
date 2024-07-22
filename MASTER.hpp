@@ -112,6 +112,7 @@ public:
     else if (prog_choice == 11.0)
     {
       chaos A;
+      A.input(x, y, z, val);
       A.sap();
     }
     else
