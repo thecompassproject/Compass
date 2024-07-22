@@ -9,6 +9,15 @@
 </head>
 <style>
 
+.link-home{
+  color: #ff00e0;
+}
+
+.link-gui{
+  color: #c1c6fc;
+}
+
+
 .nav {
   width: 128px;
   height: 34px;
@@ -19,7 +28,7 @@
 }
 .custom-bg1 {
     background: rgb(9,9,121);
-    background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(255,0,224,1) 75%, rgba(255,185,247,1) 100%);
+    background: linear-gradient(90deg, rgba(9,9,121,1) 0%, #ff00e0 75%, rgba(255,185,247,1) 100%);
     }
 
 
@@ -34,7 +43,7 @@
         color:#c1c6fc;
         text-decoration: none;
         &:hover {
-            color: #ff00e0;
+          color: #ff9cf3;
         }
     }
 
@@ -59,8 +68,8 @@
   <div class="container w-65">
     
     <div class="d-flex custom-bg1 p-3 custom-bg1">
-        <a href="/" class="me-5"> Home </a>
-        <a href="/gui"> Let's Learn! </a>
+        <a href="/" class="me-5 link-home"> Home </a>
+        <a href="/gui" class="link-gui"> Let's Learn! </a>
     </div>
     
     <div class="p-3 mb-2 text-info-emphasis  custom-bg2">
