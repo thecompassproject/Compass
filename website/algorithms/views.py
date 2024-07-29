@@ -4,18 +4,17 @@ import build.Debug.cpp_function as cpp_function
 
 
 def algorithms(request):
-
     prog_choice = request.GET.get('prog_choice')
     if prog_choice is not None and len(prog_choice) > 0:
         prog_choice = float(prog_choice)
     else:
         prog_choice = 0
 
-    V0 = request.GET.get('V0')
-    if V0 is not None and len(V0) > 0:
-        V0 = float(V0)
+    v0 = request.GET.get('V0')
+    if v0 is not None and len(v0) > 0:
+        v0 = float(v0)
     else:
-        V0 = 0
+        v0 = 0
 
     r = request.GET.get('r')
     if r is not None and len(r) > 0:
@@ -41,11 +40,11 @@ def algorithms(request):
     else:
         m = 0
 
-    val = request.GET.get('val')
-    if val is not None and len(val) > 0:
-        val = float(val)
+    method_choice = request.GET.get('method_choice')
+    if method_choice is not None and len(method_choice) > 0:
+        method_choice = float(method_choice)
     else:
-        val = 0
+        method_choice = 0
 
     L = request.GET.get('L')
     if L is not None and len(L) > 0:
@@ -77,17 +76,17 @@ def algorithms(request):
     else:
         finalTime = 0
 
-    I = request.GET.get('I')
-    if I is not None and len(I) > 0:
-        I = float(I)
+    i0 = request.GET.get('i0')
+    if i0 is not None and len(i0) > 0:
+        i0 = float(i0)
     else:
-        I = 0
+        i0 = 0
 
-    Q = request.GET.get('Q')
-    if Q is not None and len(Q) > 0:
-        Q = float(Q)
+    q0 = request.GET.get('q0')
+    if q0 is not None and len(q0) > 0:
+        q0 = float(q0)
     else:
-        Q = 0
+        q0 = 0
 
     n = request.GET.get('n')
     if n is not None and len(n) > 0:
@@ -155,11 +154,11 @@ def algorithms(request):
     else:
         x = 0
 
-    v = request.GET.get('v')
-    if v is not None and len(v) > 0:
-        v = float(v)
+    v0 = request.GET.get('v0')
+    if v0 is not None and len(v0) > 0:
+        v0 = float(v0)
     else:
-        v = 0
+        v0 = 0
 
     q = request.GET.get('q')
     if q is not None and len(q) > 0:
@@ -169,7 +168,7 @@ def algorithms(request):
 
     vx = request.GET.get('vx')
     if vx is not None and len(vx) > 0:
-        vx = float(v)
+        vx = float(vx)
     else:
         vx = 0
 
@@ -221,29 +220,42 @@ def algorithms(request):
     else:
         Bz = 0
 
+    y = request.GET.get('y')
+    if y is not None and len(y) > 0:
+        y = float(y)
+    else:
+        y = 0
+
+    z = request.GET.get('z')
+    if z is not None and len(z) > 0:
+        z = float(z)
+    else:
+        z = 0
+
     # Get result from a CPP function
-    result = cpp_function.run(prog_choice, val, m, r, V0, th, c,
-                              L, C, R, initialTime, finalTime, I, Q, n,
+    result = cpp_function.run(prog_choice, method_choice, m, r, v0, th, c,
+                              L, C, R, initialTime, finalTime, i0, q0, n,
                               m1, m2, l1, l2, o11, o22, g,
-                              p, mu, x, v,
-                              q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz)
+                              p, mu, x, v0,
+                              q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz,
+                              y, z)
 
     context = {
         'result': result,
         'm': m,
         'r': r,
         'th': th,
-        'V0': V0,
+        'V0': v0,
         'c': c,
-        'val': val,
+        'method_choice': method_choice,
         'prog_choice': prog_choice,
         'L': L,
         'C': C,
         'R': R,
         'initialTime': initialTime,
         'finalTime': finalTime,
-        'I': I,
-        'Q': Q,
+        'I': i0,
+        'Q': q0,
         'n': n,
         'm1': m1,
         'm2': m2,
@@ -255,7 +267,7 @@ def algorithms(request):
         'p': p,
         'mu': mu,
         'x': x,
-        'v': v,
+        'v': v0,
         'q': q,
         'vx': vx,
         'vy': vy,
@@ -265,7 +277,9 @@ def algorithms(request):
         'Ez': Ez,
         'Bx': Bx,
         'By': By,
-        'Bz': Bz
+        'Bz': Bz,
+        'y': y,
+        'z': z
     }
 
     template = loader.get_template('gui.html')
@@ -273,8 +287,6 @@ def algorithms(request):
 
 
 def homePage(request):
-
     context = {}
-
     template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
