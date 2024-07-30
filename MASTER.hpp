@@ -31,29 +31,30 @@ private:
   int times, rply, nNn = 12;
 
 public:
-  string Slave(double prog_choice, double val, double m, double r, double V0, double th, double c,
+  string Slave(double prog_choice, double method_choice, double m, double r, double V0, double th, double c,
                double L, double C, double R, double initialTime, double finalTime, double I, double Q, double n,
                double m1, double m2, double l1, double l2, double o11, double o22, double g,
                double p, double mu, double x, double v,
-               double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz)
+               double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
+               double y, double z)
   {
     if (prog_choice == 1.0)
     {
-      proj p;
-      p.input(val, m, r, V0, th, c);
-      return p.ND();
+      projectile object;
+      object.input(method_choice, m, r, V0, th, c);
+      return object.ND();
     }
     else if (prog_choice == 2.0)
     {
       LCR under;
-      string message = under.input(val, L, C, R);
+      string message = under.input(method_choice, L, C, R);
       under.kart(initialTime, finalTime, I, Q, n);
       return message;
     }
     else if (prog_choice == 3.0)
     {
       double_pendulum d;
-      d.input(m1, m2, l1, l2, o11, o22, g, val);
+      d.input(m1, m2, l1, l2, o11, o22, g, method_choice);
       d.yo();
       return "";
     }
@@ -61,27 +62,23 @@ public:
     else if (prog_choice == 4.0)
     {
       drag queen;
-      queen.input(m, r, p, mu, c, g, val);
-      queen.b(x, v);
+      queen.input(m, r, p, mu, c, g, x, v, method_choice);
+      queen.b();
       return "";
     }
 
     else if (prog_choice == 5.0)
     {
       field f;
-      f.input(q, m, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz, val);
+      f.input(q, m, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz, method_choice);
       f.solve();
       return "";
     }
     else if (prog_choice == 6.0)
     {
-      peace jude;
-      jude.saman();
-      jude.sejal();
-      jude.sage();
-      jude.raavi();
-      jude.romi();
-      jude.dualipa();
+      chaos A;
+      A.input(x, y, z, method_choice);
+      A.sap();
     }
     else if (prog_choice == 7.0)
     {
@@ -111,9 +108,13 @@ public:
     }
     else if (prog_choice == 11.0)
     {
-      chaos A;
-      A.input(x, y, z, val);
-      A.sap();
+      peace jude;
+      jude.saman();
+      jude.sejal();
+      jude.sage();
+      jude.raavi();
+      jude.romi();
+      jude.dualipa();
     }
     else
     {

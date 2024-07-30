@@ -1,10 +1,10 @@
 class double_pendulum
 {
 private:
-    double _g, _m1, _m2, _l1, _l2, _o11, _o22, _val;
+    double _g, _m1, _m2, _l1, _l2, _o11, _o22, _method_choice;
 
 public:
-    void input(double m1, double m2, double l1, double l2, double o11, double o22, double g, double val)
+    void input(double m1, double m2, double l1, double l2, double o11, double o22, double g, double method_choice)
     {
         _o11 = o11 * (M_PI / 180);
         _o22 = o22 * (M_PI / 180);
@@ -13,7 +13,7 @@ public:
         _l1 = l1;
         _l2 = l2;
         _g = g;
-        _val = val;
+        _method_choice = method_choice;
     }
     double ac1(double th1, double th2, double og1, double og2)
     {
@@ -36,21 +36,21 @@ public:
             double x22 = x11 + (_l2 * sin(_o22));
             double y22 = y11 - (_l2 * cos(_o22));
             outfl << x11 << "  " << y11 << "  " << x22 << "  " << y22 << "\n";
-            if (_val == 1.0)
+            if (_method_choice == 1.0)
             {
                 calc1(std::bind(&double_pendulum::ac1, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       std::bind(&double_pendulum::ac2, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       _o11, _o22, meg11, meg22, h);
             }
 
-            else if (_val == 2.0)
+            else if (_method_choice == 2.0)
             {
                 calc4(std::bind(&double_pendulum::ac1, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       std::bind(&double_pendulum::ac2, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       _o11, _o22, meg11, meg22, h);
             }
 
-            else if (_val == 3.0)
+            else if (_method_choice == 3.0)
             {
                 calc(std::bind(&double_pendulum::ac1, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                      std::bind(&double_pendulum::ac2, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),

@@ -1,16 +1,16 @@
 #include <corecrt_math_defines.h> // to fix M_PI identifier not found error on windows OS
 using namespace std;
 
-class proj
+class projectile
 {
 private:
     double _g, _p, _ax, _ay;
-    double _val, _m, _r, _V0, _th, _c;
+    double _method_choice, _m, _r, _V0, _th, _c;
 
 public:
-    void input(double val, double m, double r, double V0, double th, double c)
+    void input(double method_choice, double m, double r, double V0, double th, double c)
     {
-        _val = val;
+        _method_choice = method_choice;
         _m = m;
         _r = r;
         _V0 = V0;
@@ -41,19 +41,19 @@ public:
 
     string ND()
     {
-        char *file_name = "proj.dat"; // give a default name to the file
-        if (_val == 1.0)
+        char *file_name = "projectile.dat"; // give a default name to the file
+        if (_method_choice == 1.0)
         {
-            file_name = "proj_rk4.dat";
+            file_name = "projectile_rk4.dat";
         }
-        else if (_val == 2.0)
+        else if (_method_choice == 2.0)
         {
-            file_name = "proj_euler.dat";
+            file_name = "projectile_euler.dat";
         }
 
-        else if (_val == 3.0)
+        else if (_method_choice == 3.0)
         {
-            file_name = "proj_rals.dat";
+            file_name = "projectile_rals.dat";
         }
 
         std::ofstream out(file_name);
@@ -69,23 +69,23 @@ public:
         {
             out << X0 << "  " << Y0 << "\n";
 
-            if (_val == 1.0)
+            if (_method_choice == 1.0)
             {
-                calc1(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
-                      std::bind(&proj::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+                calc1(std::bind(&projectile::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+                      std::bind(&projectile::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       X0, Y0, Vx, Vy, h);
             }
-            else if (_val == 2.0)
+            else if (_method_choice == 2.0)
             {
-                calc4(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
-                      std::bind(&proj::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+                calc4(std::bind(&projectile::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+                      std::bind(&projectile::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       X0, Y0, Vx, Vy, h);
             }
 
-            else if (_val == 3.0)
+            else if (_method_choice == 3.0)
             {
-                calc(std::bind(&proj::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
-                     std::bind(&proj::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+                calc(std::bind(&projectile::S, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+                     std::bind(&projectile::A, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                      X0, Y0, Vx, Vy, h);
             }
             else

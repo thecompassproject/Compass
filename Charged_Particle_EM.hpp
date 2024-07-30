@@ -1,10 +1,10 @@
 class field
 {
 private:
-    double _q, _m, _vx, _vy, _vz, _Ex, _Ey, _Ez, _Bx, _By, _Bz, _h, _val;
+    double _q, _m, _vx, _vy, _vz, _Ex, _Ey, _Ez, _Bx, _By, _Bz, _h, _method_choice;
 
 public:
-    void input(double q, double m, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz, double val)
+    void input(double q, double m, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz, double method_choice)
     {
         _q = q;
         _m = m;
@@ -17,7 +17,7 @@ public:
         _Bx = Bx;
         _By = By;
         _Bz = Bz;
-        _val = val;
+        _method_choice = method_choice;
     }
 
     double AX(double x1, double y1, double z1, double vx1, double vy1, double vz1)
@@ -47,7 +47,7 @@ public:
         for (double i = 0; i < n; i++)
         {
 
-            if (_val == 1.0)
+            if (_method_choice == 1.0)
             {
                 rk43(std::bind(&field::AX, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
                      std::bind(&field::AY, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
@@ -55,7 +55,7 @@ public:
                      x, y, z, _vx, _vy, _vz, _h);
             }
 
-            else if (_val == 2.0)
+            else if (_method_choice == 2.0)
             {
                 euler3(std::bind(&field::AX, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
                        std::bind(&field::AY, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
@@ -63,7 +63,7 @@ public:
                        x, y, z, _vx, _vy, _vz, _h);
             }
 
-            else if (_val == 3.0)
+            else if (_method_choice == 3.0)
             {
                 ralston3(std::bind(&field::AX, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
                          std::bind(&field::AY, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
@@ -87,7 +87,7 @@ public:
             for (double i = 0; i < _n; i++)
             {
 
-                if (_val == 1.0)
+                if (_method_choice == 1.0)
                 {
                     euler3(std::bind(&field::AX, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
                            std::bind(&field::AY, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
@@ -95,7 +95,7 @@ public:
                            _x, _y, _z, _vx, _vy, _vz, _h);
                 }
 
-                else if (_val == 2.0)
+                else if (_method_choice == 2.0)
                 {
                     ralston3(std::bind(&field::AX, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
                              std::bind(&field::AY, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
@@ -103,7 +103,7 @@ public:
                              _x, _y, _z, _vx, _vy, _vz, _h);
                 }
 
-                else if (_val == 3.0)
+                else if (_method_choice == 3.0)
                 {
                     rk43(std::bind(&field::AX, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),
                          std::bind(&field::AY, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6),

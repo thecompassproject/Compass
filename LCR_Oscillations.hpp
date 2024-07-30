@@ -1,17 +1,17 @@
 class LCR
 {
 private:
-    double _L, _C, _R, _h, _val;
+    double _L, _C, _R, _h, _method_choice;
     double _initialTime, _finalTime, _I, _Q;
     int _n;
 
 public:
-    string input(double val, double L, double C, double R)
+    string input(double method_choice, double L, double C, double R)
     {
         _L = 1e-3 * L;
         _C = 1e-6 * C;
         _R = R;
-        _val = val;
+        _method_choice = method_choice;
 
         if (pow(_R, 2) > (4 * _L) / _C)
         {
@@ -51,15 +51,15 @@ public:
         double h = (_finalTime - _initialTime) / _n;
 
         char *file_name = "lcr.dat";
-        if (_val == 1.0)
+        if (_method_choice == 1.0)
         {
             file_name = "lcr_rk4.dat";
         }
-        else if (_val == 2.0)
+        else if (_method_choice == 2.0)
         {
             file_name = "lcr_euler.dat";
         }
-        else if (_val == 3.0)
+        else if (_method_choice == 3.0)
         {
             file_name = "lcr_rals.dat";
         }
@@ -73,21 +73,21 @@ public:
         for (double t = _initialTime; t <= _finalTime; t += h)
         {
             // steps calculating is replaced by function call from included header file
-            if (_val == 1.0)
+            if (_method_choice == 1.0)
             {
                 calc1(std::bind(&LCR::cha_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       std::bind(&LCR::f_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       A, B, _Q, _I, h);
             }
 
-            else if (_val == 2.0)
+            else if (_method_choice == 2.0)
             {
                 calc4(std::bind(&LCR::cha_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       std::bind(&LCR::f_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                       A, B, _Q, _I, h);
             }
 
-            else if (_val == 3.0)
+            else if (_method_choice == 3.0)
             {
                 calc(std::bind(&LCR::cha_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
                      std::bind(&LCR::f_wrapper, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),

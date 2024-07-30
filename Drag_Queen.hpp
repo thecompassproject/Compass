@@ -1,11 +1,11 @@
 class drag
 {
 private:
-    double _m, _r, _p, _mu, _c, _g, _val, _x, _v;
+    double _m, _r, _p, _mu, _c, _g, _method_choice, _x, _v;
     double A, B;
 
 public:
-    void input(double m, double r, double p, double mu, double c, double g, double val)
+    void input(double m, double r, double p, double mu, double c, double g, double x, double v, double method_choice)
     {
         _m = m;
         _r = r;
@@ -13,7 +13,9 @@ public:
         _mu = mu;
         _c = c;
         _g = g;
-        _val = val;
+        _x = x;
+        _v = v;
+        _method_choice = method_choice;
     }
 
     float ono(double A, double v1, double B)
@@ -26,13 +28,10 @@ public:
         return B1;
     }
 
-    void b(double x, double v)
+    void b()
     {
         double in, a;
         float h = 0.15;
-
-        _x = x;
-        _v = v;
 
         A = 0;
         B = 0;
@@ -42,22 +41,22 @@ public:
         {
             a = ono(A, _v, B);
             out << t << "  " << _x << "  " << _v << "  " << a << "\n";
-            if (_val == 1.0)
+            if (_method_choice == 1.0)
             {
-                rk4A(std::bind(&drag::yoko, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), x, v, A, -h);
-                rk4A(std::bind(&drag::ono, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), v, a, A, h);
+                rk4A(std::bind(&drag::yoko, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), _x, _v, A, -h);
+                rk4A(std::bind(&drag::ono, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), _v, a, A, h);
             }
 
-            else if (_val == 2.0)
+            else if (_method_choice == 2.0)
             {
-                eulersA(std::bind(&drag::yoko, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), x, v, A, -h);
-                eulersA(std::bind(&drag::ono, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), v, a, A, h);
+                eulersA(std::bind(&drag::yoko, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), _x, _v, A, -h);
+                eulersA(std::bind(&drag::ono, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), _v, a, A, h);
             }
 
-            else if (_val == 3.0)
+            else if (_method_choice == 3.0)
             {
-                ralsA(std::bind(&drag::yoko, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), x, v, A, -h);
-                ralsA(std::bind(&drag::ono, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), v, a, A, h);
+                ralsA(std::bind(&drag::yoko, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), _x, _v, A, -h);
+                ralsA(std::bind(&drag::ono, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), _v, a, A, h);
             }
 
             else
@@ -66,7 +65,7 @@ public:
                 break;
             }
 
-            if (x < 0)
+            if (_x < 0)
             {
                 break;
             }
