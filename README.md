@@ -14,8 +14,9 @@ The project has been submitted to the IAPT National Competition in Computational
 ## License
 ## Authors
 
+- Amritanshu Thakur
+- Samanpreet Singh Lang
 - Samreet Dhillon
-
 ## Resources
 
 - https://medium.com/@stevechange/using-python-with-c-part1-3e894912214d
