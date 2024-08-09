@@ -36,7 +36,8 @@ public:
                double m1, double m2, double l1, double l2, double o11, double o22, double g,
                double p, double mu, double x, double v,
                double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
-               double y, double z)
+               double y, double z,
+               double time_period, double a, double loop_count)
   {
     if (prog_choice == 1.0)
     {
@@ -83,7 +84,7 @@ public:
     else if (prog_choice == 7.0)
     {
       fourier series;
-      series.input();
+      series.input(n, time_period, a, loop_count);
       series.calc();
     }
     else if (prog_choice == 8.0)

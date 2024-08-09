@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include "MASTER.hpp"
+#include "master.hpp"
 using namespace std;
 
 string mainserver(double prog_choice, double method_choice, double m, double r, double V0, double th, double c,
@@ -10,7 +10,8 @@ string mainserver(double prog_choice, double method_choice, double m, double r, 
                   double m1, double m2, double l1, double l2, double o11, double o22, double g,
                   double p, double mu, double x, double v,
                   double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
-                  double y, double z)
+                  double y, double z,
+                  double time_period, double a, double loop_count)
 {
     Master Free;
     string response = Free.Slave(prog_choice, method_choice, m, r, V0, th, c,
@@ -18,7 +19,8 @@ string mainserver(double prog_choice, double method_choice, double m, double r, 
                                  m1, m2, l1, l2, o11, o22, g,
                                  p, mu, x, v,
                                  q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz,
-                                 y, z);
+                                 y, z,
+                                 time_period, a, loop_count);
     return response;
 }
 

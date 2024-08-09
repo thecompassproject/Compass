@@ -1,6 +1,23 @@
+import urllib.parse
 from django.http import HttpResponse
 from django.template import loader
 import build.Debug.cpp_function as cpp_function
+
+# import urllib
+# from django.shortcuts import render
+# import matplotlib.pyplot as plt
+# import io
+# import base64
+
+# def home(request):
+#     plt.plot(range(10))
+#     fig = plt.gcf()
+#     buf = io.BytesIO()
+#     fig.savefig(buf, format='png')
+#     buf.seek(0)
+#     string = base64.b64encode(buf.read())
+#     uri = urllib.parse.quote(string)
+#     return render(request, 'gui.html', {'data': uri})
 
 
 def algorithms(request):
@@ -232,13 +249,32 @@ def algorithms(request):
     else:
         z = 0
 
+    time_period = request.GET.get('time_period')
+    if time_period is not None and len(time_period) > 0:
+        time_period = float(time_period)
+    else:
+        time_period = 0
+
+    a = request.GET.get('a')
+    if a is not None and len(a) > 0:
+        a = float(a)
+    else:
+        a = 0
+
+    loop_count = request.GET.get('loop_count')
+    if loop_count is not None and len(loop_count) > 0:
+        loop_count = float(loop_count)
+    else:
+        loop_count = 0
+
     # Get result from a CPP function
     result = cpp_function.run(prog_choice, method_choice, m, r, v0, th, c,
                               L, C, R, initialTime, finalTime, i0, q0, n,
                               m1, m2, l1, l2, o11, o22, g,
                               p, mu, x, v0,
                               q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz,
-                              y, z)
+                              y, z,
+                              time_period, a, loop_count)
 
     context = {
         'result': result,
@@ -279,8 +315,18 @@ def algorithms(request):
         'By': By,
         'Bz': Bz,
         'y': y,
-        'z': z
+        'z': z,
+        'time_period': time_period,
+        'a': a,
+        'loop_count': loop_count
     }
+
+    # if True:
+
+    #     response = HttpResponse(content_type='text/plain')
+    #     response['Content-Disposition'] = 'attachment; filename="filename.txt"'
+    #     response.write(result)
+    #     return response
 
     template = loader.get_template('gui.html')
     return HttpResponse(template.render(context, request))
@@ -290,3 +336,10 @@ def homePage(request):
     context = {}
     template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
+
+
+def download(request):
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename="filename.txt"'
+    response.write('Hello')
+    return response

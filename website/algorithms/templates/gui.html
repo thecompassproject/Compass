@@ -6,6 +6,7 @@
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+  <link rel="stylesheet" href="{% static 'highlight.css'%}" type="text/css" media="screen">
 </head>
 <!-- CSS styling begins here -->
 <style>
@@ -22,9 +23,6 @@
 .custom-bg1 {
   background: rgb(9,9,121);
   background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(255,0,224,1) 75%, rgba(255,185,247,1) 100%);
-    }
-.custom-bg2 {
-    background-image: url("{% static 'bg3.jpg' %}");
     }
 .custom-bg2 {
     background-image: url("{% static 'bg3.jpg' %}");
@@ -58,7 +56,6 @@
 <body>
   
   <div class="container w-65">
-
     <div class="d-flex custom-bg1 p-3">
       <a href="/" class="me-5 link-home"> Home </a>
       <a href="/gui" class="link-gui"> Let's Learn! </a>
@@ -154,7 +151,7 @@
           </div>
         </div>
 
-        <!-- <p class="h5 text"> {{ result }} </p> -->
+        <p class="h5 text"> {{ result }} </p>
       
         <div id="L" class="d-none">
           <p class="h5">Inductance (mH) </p>
@@ -439,15 +436,34 @@
               <input name="Bz" value="{{ Bz }}" class="form-control mb-3" type="text">
             </div>
           </div>
-        </div>
+        </div>  
+
+        <code class="bg-custom2"></code>
   
       </div>
 
-      <button type="submit" class="btn btn-primary mt-3">Run</button>
-      <button type="button" onclick="resetForm()" class="btn btn-primary mt-3">Clear</button>
-      <button id="docs" type="button" class="btn btn-primary mt-3 d-none">View Documentation</button>
-      <button id="source-code" type="button" class="btn btn-primary mt-3 d-none">View program code</button>
-      <button id="download" type="button" class="btn btn-primary mt-3 d-none">Download data</button>
+      <button type="submit" class="btn btn-primary mt-3 mb-3" onclick="dataDownload()">Run</button>
+      <button type="button" onclick="resetForm()" class="btn btn-primary mt-3 mb-3">Clear</button>
+      
+      <div id="data-download" class="{% if result == '' %}d-none{% endif %}">
+        
+        <p id="new-actions" class="h5">To download your program data, click on the button below:</p>
+        <button id="download" type="button" class="btn btn-primary mt-3 d-none">Download data</button>
+
+      </div>
+
+      <button id="docs" type="button" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</button>
+      <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none" onclick="viewProgramCode()">View program code</button>
+
+      <br>
+      <br>
+      <br>
+
+      {% include 'projectile_code.html'%}
+
+      <div id="code-embed" class="d-none">
+        <div data-pym-src="https://www.jdoodle.com/embed/v1/f2a568536390d8a1?stdin=0&arg=0"></div> 
+      </div>  
 
     </form>
 
@@ -456,7 +472,19 @@
   </div>
 </body>
 
+<script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"> </script>
+{% include 'copy_button.html'%}
 <script>
+
+  function dataDownload(){
+    const dataDownload = document.getElementById("data-download");
+    dataDownload.classList.remove("d-none");
+  }
+  function viewProgramCode(){
+    const codeEmbed = document.getElementById("code-embed");
+    codeEmbed.classList.remove("d-none");
+  }
+
   function resetForm() {
     console.log("here");
     window.location = window.location.pathname;
@@ -493,7 +521,7 @@
         2: false,
         3: false,
         4: true,
-        5: false,
+        5: true,
       },
       "r": {
         1: true,
@@ -763,7 +791,6 @@
           field.classList.remove("d-none");
         }
         else {
-          console.log(field)
           field.classList.add("d-none");
         }
       })
