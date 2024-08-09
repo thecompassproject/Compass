@@ -54,6 +54,11 @@
   *{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
+  .copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
 </style>
 <!-- CSS styling ends here -->
 <body>
@@ -452,17 +457,31 @@
 
     </form>
 
-    </div>
-
-    <div>
-      {% for file_name in codeFilesList %} 
-          <code id="code-{{ file_name }}" class="d-none">{{ file_name | add:".md" | markdown | safe }}</code>
-      {% endfor %}
-    </div>
   </div>
+
+  {% for file_name in codeFilesList %} 
+    <div id="code-{{ file_name }}" class="position-relative d-none bg-dark p-3 rounded">
+        <code>{{ file_name | add:".md" | markdown | safe }}</code>
+        <button id="code-copy-button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
+    </div>
+  {% endfor %}
 </body>
 
 <script>
+  async function writeTextToClipboard(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  function copyCode(fileName) {
+    const codeContent = document.querySelector(`#code-${fileName} > code`).innerText;
+    writeTextToClipboard(codeContent);
+    alert("Code copied to clipboard");
+  }
+
   function viewProgramCode() {
     const codeDisplay = {
       1: "code-abc",
@@ -480,7 +499,6 @@
   }
 
   function resetForm() {
-    console.log("here");
     window.location = window.location.pathname;
   }
 
@@ -497,7 +515,7 @@
     const downloadButton = document.getElementById("download");
     
     
-    if (program>0){
+    if (program > 0){
       docsButton.classList.remove("d-none");
       sourcecodeButton.classList.remove("d-none");
       downloadButton.classList.remove("d-none");
@@ -785,7 +803,6 @@
           field.classList.remove("d-none");
         }
         else {
-          console.log(field)
           field.classList.add("d-none");
         }
       })
