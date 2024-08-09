@@ -1,4 +1,7 @@
+#ifdef _WIN32
 #include <corecrt_math_defines.h> // to fix M_PI identifier not found error on windows OS
+#endif
+
 using namespace std;
 
 class projectile

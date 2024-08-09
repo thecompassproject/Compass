@@ -1,3 +1,4 @@
+@REM Build script file for Windows
 mkdir build
 cd build
 cmake ../

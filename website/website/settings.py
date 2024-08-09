@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'algorithms',
     'bootstrap5',
     'build',
+    'algorithms.templatetags.markdown_extras',
 ]
 
 MIDDLEWARE = [

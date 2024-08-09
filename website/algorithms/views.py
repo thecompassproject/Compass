@@ -1,7 +1,14 @@
 import urllib.parse
 from django.http import HttpResponse
 from django.template import loader
-import build.Debug.cpp_function as cpp_function
+
+try:
+    # For Windows
+    import build.Debug.cpp_function as cpp_function
+except ImportError:
+    # For Mac/Linux
+    import build.cpp_function as cpp_function
+
 
 # import urllib
 # from django.shortcuts import render
@@ -318,7 +325,8 @@ def algorithms(request):
         'z': z,
         'time_period': time_period,
         'a': a,
-        'loop_count': loop_count
+        'loop_count': loop_count,
+        'codeFilesList': ['abc', 'def', 'xyz']
     }
 
     # if True:
