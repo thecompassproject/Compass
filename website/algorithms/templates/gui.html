@@ -448,8 +448,10 @@
   
       </div>
 
-      <button type="submit" class="btn btn-primary mt-3">Run</button>
-      <button type="button" onclick="resetForm()" class="btn btn-primary mt-3 mb-3">Clear</button>
+      <div class="mt-3 mb-3">
+        <button type="submit" class="btn btn-primary">Run</button>
+        <button type="button" onclick="resetForm()" class="btn btn-primary">Clear</button>
+      </div>
       
       <div id="data-download" class="{% if result == '' %}d-none{% endif %}">
         <p id="new-actions" class="h5">To download your program data, click on the button below:</p>
@@ -472,7 +474,7 @@
   </div>
 
   {% for file_name in codeFilesList %} 
-    <div id="code-{{ file_name }}" class="position-relative d-none bg-dark p-3 rounded">
+    <div id="code-{{ file_name }}" class="position-relative d-none bg-dark p-3 rounded mb-5">
         <code>{{ file_name | add:".md" | markdown | safe }}</code>
         <button id="code-copy-button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
     </div>
