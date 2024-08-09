@@ -1,6 +1,13 @@
 from django.http import HttpResponse
 from django.template import loader
-import build.Debug.cpp_function as cpp_function
+
+try:
+    # For Windows
+    import build.Debug.cpp_function as cpp_function
+except ImportError:
+    # For Mac/Linux
+    import build.cpp_function as cpp_function
+
 
 
 def algorithms(request):
@@ -279,7 +286,8 @@ def algorithms(request):
         'By': By,
         'Bz': Bz,
         'y': y,
-        'z': z
+        'z': z,
+        'codeFilesList': ['abc', 'def', 'xyz']
     }
 
     template = loader.get_template('gui.html')

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Computational Physics GUI</title>
+  {% load markdown_extras %}
   {% load static %}
   {% load bootstrap5 %}
   {% bootstrap_css %}
@@ -446,17 +447,38 @@
       <button type="submit" class="btn btn-primary mt-3">Run</button>
       <button type="button" onclick="resetForm()" class="btn btn-primary mt-3">Clear</button>
       <button id="docs" type="button" class="btn btn-primary mt-3 d-none">View Documentation</button>
-      <button id="source-code" type="button" class="btn btn-primary mt-3 d-none">View program code</button>
+      <button id="source-code" type="button" class="btn btn-primary mt-3 d-none" onclick="viewProgramCode()">View program code</button>
       <button id="download" type="button" class="btn btn-primary mt-3 d-none">Download data</button>
 
     </form>
 
     </div>
 
+    <div>
+      {% for file_name in codeFilesList %} 
+          <code id="code-{{ file_name }}" class="d-none">{{ file_name | add:".md" | markdown | safe }}</code>
+      {% endfor %}
+    </div>
   </div>
 </body>
 
 <script>
+  function viewProgramCode() {
+    const codeDisplay = {
+      1: "code-abc",
+      2: "code-def",
+      3: "code-xyz",
+    }
+
+    const program = document.getElementById("prog").value;
+    
+    Object.values(codeDisplay).forEach((id) => {
+      document.getElementById(id).classList.add("d-none");
+    });
+
+    document.getElementById(codeDisplay[program]).classList.remove("d-none");
+  }
+
   function resetForm() {
     console.log("here");
     window.location = window.location.pathname;

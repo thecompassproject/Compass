@@ -6,8 +6,12 @@ cppyy-cling==6.30.0
 CPyCppyy==1.12.16
 Django==4.2.13
 django-bootstrap-v5==1.0.11
+importlib_metadata==8.2.0
+Markdown==3.5.2
 pybind11==2.13.1
 pybind11_global==2.13.1
 soupsieve==2.5
 sqlparse==0.5.0
+typing_extensions==4.12.2
 tzdata==2024.1
+zipp==3.19.2
