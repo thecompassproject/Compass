@@ -326,7 +326,7 @@ def algorithms(request):
         'time_period': time_period,
         'a': a,
         'loop_count': loop_count,
-        'codeFilesList': ['abc', 'def', 'xyz']
+        'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations']
     }
 
     # if True:

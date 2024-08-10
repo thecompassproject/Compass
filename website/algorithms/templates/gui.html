@@ -471,18 +471,19 @@
 
     </form>
 
-  </div>
-
-  {% for file_name in codeFilesList %} 
+    {% for file_name in codeFilesList %} 
     <div id="code-{{ file_name }}" class="position-relative d-none bg-dark p-3 rounded mb-5">
         <code>{{ file_name | add:".md" | markdown | safe }}</code>
         <button id="code-copy-button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
     </div>
   {% endfor %}
+
+  </div>
+
 </body>
 
 <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"> </script>
-{% include 'copy_button.html'%}
+
 <script>
   async function writeTextToClipboard(text) {
     try {
@@ -500,14 +501,18 @@
 
   function viewProgramCode() {
     const codeDisplay = {
-      1: "code-abc",
-      2: "code-def",
-      3: "code-xyz",
+      1: "code-projectile_code",
+      2: "code-lcr_code",
+      3: "code-double_pendulum",
+      4: "code-drag",
+      5: "code-em_oscillations"
+    
     }
 
     const program = document.getElementById("prog").value;
     
     Object.values(codeDisplay).forEach((id) => {
+      console.log(id);
       document.getElementById(id).classList.add("d-none");
     });
 
