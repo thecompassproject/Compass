@@ -474,7 +474,7 @@
   </div>
 
   {% for file_name in codeFilesList %} 
-    <div id="code-{{ file_name }}" class="position-relative d-none bg-dark p-3 rounded mb-5">
+    <div id="code-{{ file_name }}" class="codehilite position-relative d-none p-3 rounded mb-5">
         <code>{{ file_name | add:".md" | markdown | safe }}</code>
         <button id="code-copy-button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
     </div>
@@ -482,7 +482,7 @@
 </body>
 
 <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"> </script>
-{% include 'copy_button.html'%}
+
 <script>
   async function writeTextToClipboard(text) {
     try {
