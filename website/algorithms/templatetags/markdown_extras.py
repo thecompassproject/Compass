@@ -15,4 +15,4 @@ def get_file_content(file_name):
 @stringfilter
 def markdown(file_name):
     content = get_file_content(file_name)
-    return md.markdown(content, extensions=['markdown.extensions.fenced_code'])
+    return md.markdown(content, extensions=['markdown.extensions.fenced_code', 'codehilite'])
