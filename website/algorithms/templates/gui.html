@@ -409,11 +409,6 @@
         <button type="button" onclick="resetForm()" class="btn btn-primary">Clear</button>
       </div>
       
-      <div id="data-download" class="{% if result == '' %}d-none{% endif %}">
-        <p id="new-actions" class="h5">To download your program data, click on the button below:</p>
-        <button id="download" type="button" class="btn btn-primary mt-3 d-none">Download data</button>
-      </div>
-  
       <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a>
 
       <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none" onclick="viewProgramCode()">View program code</button>
@@ -479,12 +474,7 @@
 
     document.getElementById(codeDisplay[program]).classList.remove("d-none");
   }
-  
-  function dataDownload(){
-    const dataDownload = document.getElementById("data-download");
-    dataDownload.classList.remove("d-none");
-  }
-  
+
   function resetForm() {
     window.location = window.location.pathname;
   }
@@ -498,21 +488,18 @@
     const fieldsHeading = document.getElementById("fields-heading");
 
     const docsButton = document.getElementById("docs");
-    const sourcecodeButton = document.getElementById("source-code");
-    const downloadButton = document.getElementById("download");    
+    const sourcecodeButton = document.getElementById("source-code");    
     
     docsButton.setAttribute("href", "/static/documentation/" + docsDisplay[program] + ".pdf");
 
     if (program > 0){
       docsButton.classList.remove("d-none");
       sourcecodeButton.classList.remove("d-none");
-      downloadButton.classList.remove("d-none");
     }
 
     else{
       docsButton.classList.add("d-none");
       sourcecodeButton.classList.add("d-none");
-      downloadButton.classList.add("d-none");
     }
 
     const fields = {
@@ -801,6 +788,9 @@
     }
     else if (program == 4) {
       massFieldHeading.innerText = "Mass of the body (kg)";
+    }
+    else if (program == 5) {
+      massFieldHeading.innerText = "Mass of the particle (kg)";
     }
 
   const radiusFieldHeading = document.getElementById("radius-field-heading");
