@@ -37,7 +37,8 @@ public:
                double p, double mu, double x, double v,
                double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
                double y, double z,
-               double time_period, double a, double loop_count)
+               double time_period, double a, double loop_count,
+               double b)
   {
     if (prog_choice == 1.0)
     {
@@ -89,16 +90,16 @@ public:
     }
     else if (prog_choice == 8.0)
     {
+      Quad q;
+      q.coeff(a, b, c);
+      q.roots();
+    } // this block is for adding more programs
+    else if (prog_choice == 9.0)
+    {
       Fitit fi;
       fi.inp();
       fi.calc();
       fi.printit();
-    } // this block is for adding more programs
-    else if (prog_choice == 9.0)
-    {
-      Quad q;
-      q.coeff();
-      q.roots();
     }
     else if (prog_choice == 10.0)
     {

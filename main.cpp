@@ -11,7 +11,8 @@ string mainserver(double prog_choice, double method_choice, double m, double r, 
                   double p, double mu, double x, double v,
                   double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
                   double y, double z,
-                  double time_period, double a, double loop_count)
+                  double time_period, double a, double loop_count,
+                  double b)
 {
     Master Free;
     string response = Free.Slave(prog_choice, method_choice, m, r, V0, th, c,
@@ -20,7 +21,8 @@ string mainserver(double prog_choice, double method_choice, double m, double r, 
                                  p, mu, x, v,
                                  q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz,
                                  y, z,
-                                 time_period, a, loop_count);
+                                 time_period, a, loop_count,
+                                 b);
     return response;
 }
 
