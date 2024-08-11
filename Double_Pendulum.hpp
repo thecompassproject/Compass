@@ -31,11 +31,8 @@ public:
         std::ofstream outfl("tra.dat");
         for (double i = 0; i < 20000; i++)
         {
-            double x11 = _l1 * sin(_o11);
-            double y11 = -_l1 * cos(_o11);
-            double x22 = x11 + (_l2 * sin(_o22));
-            double y22 = y11 - (_l2 * cos(_o22));
-            outfl << x11 << "  " << y11 << "  " << x22 << "  " << y22 << "\n";
+
+            outfl << _o11 << "  " << meg11 << "  " << _o22 << "  " << meg22 << "\n";
             if (_method_choice == 1.0)
             {
                 calc1(std::bind(&double_pendulum::ac1, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
@@ -79,9 +76,9 @@ public:
             return;
         }
         fprintf(gnuplotPipe, "set size ratio -1 \n");
-        fprintf(gnuplotPipe, "set title 'Double Pendulum Trajectory'\n");
-        fprintf(gnuplotPipe, "set xlabel 'X Position'\n");
-        fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
+        fprintf(gnuplotPipe, "set title 'Double Pendulum Phase Trajectory'\n");
+        fprintf(gnuplotPipe, "set xlabel 'Angular Displacement'\n");
+        fprintf(gnuplotPipe, "set ylabel 'Angular Velocity'\n");
         fprintf(gnuplotPipe, "plot 'tra.dat' using 1:2 with lines title 'Mass^1'\n");
         fprintf(gnuplotPipe, "replot 'tra.dat' using 3:4 with lines title 'Mass^2'\n");
 

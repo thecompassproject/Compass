@@ -155,8 +155,6 @@
             </div>
           </div>
         </div>
-
-        <p class="h5 text"> {{ result }} </p>
       
         <div id="L" class="d-none">
           <p class="h5">Inductance (mH) </p>
@@ -284,20 +282,6 @@
           </div>
         </div>
       
-        <!-- <p class="h5">Mass of the body</p>
-        <div class="row">
-          <div class="col-6">
-            <input name="md" value="{{ m }}" class="form-control mb-3" type="text" placeholder="type mass">
-          </div>
-        </did="rd" iv> -->
-
-        <!-- <p class="h5">Radius of the body </p>
-        <div class="row">
-          <div class="col-6">
-            <input name="rd" value="{{ r }}"  class="form-control mb-3" type="text" placeholder="type radius">
-          </div>
-        </div> -->
-
         <div id="p" class="d-none">
           <p class="h5">Medium density (kg/m³) </p>
           <div class="row">
@@ -306,13 +290,6 @@
             </div>
           </div>
         </div>
-
-        <!-- <p class="h5">Drag coefficient of the medium</p>
-        <div class="row">
-          <div class="col-6">           
-            <input name="cd" value="{{ c }}"  class="form-control mb-3" type="text" placeholder="type drag coefficient">
-          </div>
-        </div> -->
 
         <div id="mu" class="d-none">
           <p class="h5">Viscosity coefficient of the medium (N-s/m²)</p>
@@ -333,20 +310,6 @@
           </div>
         </div>
 
-        <!-- <p class="h5">Initial velocity</p>
-        <div class="row">
-          <div class="col-6">
-            <input name="v" value="{{ v }}" class="form-control mb-3" type="text" placeholder="type initial velocity">
-          </div>
-        </did="gd" iv> -->
-
-        <!-- <p class="h5">Acceleration due to gravity</p>
-        <div class="row">
-          <div class="col-6">
-            <input name="gd" value="{{ g }}" class="form-control mb-3" type="text" placeholder="type value of acceleration due to gravity">
-          </div>
-        </div> -->
-
         <div id="q" class="d-none">
           <p class="h5">Charge on the particle (C) </p>
           <div class="row">
@@ -356,12 +319,6 @@
           </div>
         </div>
   
-        <!-- <p class="h5"> Mass of the particle </p>
-        <div class="row">
-          <div class="col-6">
-            <input name="mf" value="{{ m }}"  class="form-control mb-3" type="text">
-          </div>
-        </div> -->
         <div id="vx" class="d-none">
           <p class="h5">Magnitude of x-component of velocity of the particle (m/sec) </p>
           <div class="row">
@@ -443,7 +400,7 @@
           </div>
         </div>  
 
-        <code class="bg-custom2"></code>
+        <p id="result" class="h5 text"> {{ result }} </p>
   
       </div>
 
@@ -456,13 +413,10 @@
         <p id="new-actions" class="h5">To download your program data, click on the button below:</p>
         <button id="download" type="button" class="btn btn-primary mt-3 d-none">Download data</button>
       </div>
+  
+      <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a>
 
-      <button id="docs" type="button" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</button>
       <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none" onclick="viewProgramCode()">View program code</button>
-
-      <br>
-      <br>
-      <br>
 
       <div id="code-embed" class="d-none">
         <div data-pym-src="https://www.jdoodle.com/embed/v1/f2a568536390d8a1?stdin=0&arg=0"></div> 
@@ -510,6 +464,11 @@
       5: "code-em_oscillations"
     };
 
+    const docsDisplay = {
+      1: "Documentation_Projectile",
+      5: "Documentation_Charged_Particle_in_EM_Field",
+    };
+
   function viewProgramCode() {
 
     const program = document.getElementById("prog").value;
@@ -530,7 +489,7 @@
     window.location = window.location.pathname;
   }
 
-  function displayCondition(program) {
+  function displayCondition(program) {    
     // Heading divs
     const projectileHeading = document.getElementById("projectile-heading");
     const lcrHeading = document.getElementById("lcr-heading");
@@ -542,6 +501,8 @@
     const sourcecodeButton = document.getElementById("source-code");
     const downloadButton = document.getElementById("download");    
     
+    docsButton.setAttribute("href", "/static/documentation/" + docsDisplay[program] + ".pdf");
+
     if (program > 0){
       docsButton.classList.remove("d-none");
       sourcecodeButton.classList.remove("d-none");
@@ -872,7 +833,11 @@
     Object.values(codeDisplay).forEach((id) => {
       document.getElementById(id).classList.add("d-none");
     });
-  }  
+
+    document.getElementById("result").classList.add("d-none");
+  }
+  
+  
 </script>
 
 </html>

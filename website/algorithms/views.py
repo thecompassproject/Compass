@@ -334,7 +334,7 @@ def algorithms(request):
         'a': a,
         'loop_count': loop_count,
         'b': b,
-        'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations']
+        'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations'],
     }
 
     # if True:
