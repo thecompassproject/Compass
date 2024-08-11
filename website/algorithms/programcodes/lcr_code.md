@@ -1,9 +1,8 @@
 ```cpp
 //(1) include all the necessary libraries
 
-#include <iostream>     // <iostream> for input(cin) and output(cout) function
-#include <fstream>      // <fstream> to input/output data into/from data files
 #include <cmath>        // for predefined basic mathematical functions
+//EXERCISE NO 1: Include 'iostream' and 'fstream' header files
 
 using namespace std;    // for standard namespace (predefined keywords in c++)
 
@@ -12,14 +11,15 @@ class LCR {
 
 private:
 	double  L, C, R, Q, I, h, finalTime;
-	int n;
+	//EXERCISE NO 2: Create a varible 'n' having data type 'int'
 
 public:
 	LCR();
-	double derivative(double, double);
-	void condition();
-	void calc();
-} object;  // creating an object inside the class
+	double derivative(double Q, double I);
+	//EXERCISE NO 3: declare functions named 'condition' and 'calc' both having 'void' return type and not admitting any parameters
+
+
+};
 
 LCR::LCR() {
 	/* define a constructor for initialising the initial conditions
@@ -31,18 +31,18 @@ LCR::LCR() {
 
 	cout << "\nEnter capacitance{micro F}:::";
 	cin >> C;
-	C = C*pow(10,-6);     // for converting micro Farad into Farad
+	//EXERCISE NO 4: Convert value of 'C' into Farads by using 'pow' function
 
 	cout << "\nEnter resistance:::";
 	cin >> R;
 
 	cout << "\nEnter initial charge:::";
 	cin >> Q;
-	Q = Q*pow(10,-3);
+	Q = Q*pow(10,-3);    // for converting milli coulomb to coulomb
 
 	cout << "\nEnter initial current:::";
 	cin >> I;
-	I = I*pow(10,-3);
+	//EXERCISE NO 4: Convert value of 'I' into Coulombs by using 'pow' function
 
 	cout<<"\nEnter the final time:::";
 	cin>>finalTime;
@@ -58,22 +58,23 @@ LCR::LCR() {
 
 //(3) define an external function for calculating the first time derivative of current at every timestep
 double LCR::derivative(double Q, double I) {
-	return -(((Q/C)+(R*I))/L);
+	//EXERCISE 5: return the following value: '-(((Q/C)+(R*I))/L)'
+
 }
 
 //(4) using if() and else()	check the nature of LCR Oscillations
 void LCR::condition() {
 
-	if ( pow(R, 2) > (4 * L) / C) {
+	if (pow(R, 2) > (4 * L) / C) {
 		cout << "\nThe oscillations are over-damped.";   // for over-damped
 	}
 
-	else if ( pow(R, 2) < (4 * L) / C) {
+	//EXERCISE NO 6: write the condition for the under-damped case using 'else if' keyword and using '<' sign. Wrap the 'cout' command written below in this condition usign {}
+
 		cout << "\nThe oscillations are under-damped.";  // for under-damped
-	}
 
 	else {
-		cout << "\nThe oscillations are critically-damped."; // for critically-damped
+	//EXERCCISE NO 7: Use 'cout' command to display the following message: 'The oscillations are critically-damped.'
 	}
 }
 
@@ -94,7 +95,7 @@ void LCR::calc() {
 		double l4 = h * (I + k3);
 		double k4 = h * derivative(Q + l3, I + k3);
 		Q = Q + ((l1 + 2 * l2 + 2 * l3 + l4) / 6);
-		I = I + ((k1 + 2 * k2 + 2 * k3 + k4) / 6);
+		//EXERCISE NO 8: Update the value of 'I' by adding to its previous value, the average of the calculated 'k' slopes. Take help from the value of 'Q' written above.
 
 		out<<t<<"  "<<I<<"  "<<Q<<"\n";
 
@@ -105,29 +106,17 @@ void LCR::calc() {
 //(7) define a main function to create an instance and call the calc() function
 int main() {
 // NOTE: the constructor is called automatically for each instance created
-	object.condition();
-	object.calc();
+	LCR circuit;
+	circuit.condition();
+	//EXERCISE NO 9: call 'calc' function of the object 'circuit'
+
 	return 0;
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*ADDITIONAL EXERCISES:
+1. Read the program documentation and try solving the problem using other numerical methods and observe which one is more acccurate
+2. Observe what is the effect of not converting the user input values to appropriate units
 
 
 ```

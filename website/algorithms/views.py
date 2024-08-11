@@ -274,6 +274,12 @@ def algorithms(request):
     else:
         loop_count = 0
 
+    b = request.GET.get('b')
+    if b is not None and len(b) > 0:
+        b = float(b)
+    else:
+        b = 0
+
     # Get result from a CPP function
     result = cpp_function.run(prog_choice, method_choice, m, r, v0, th, c,
                               L, C, R, initialTime, finalTime, i0, q0, n,
@@ -281,7 +287,8 @@ def algorithms(request):
                               p, mu, x, v0,
                               q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz,
                               y, z,
-                              time_period, a, loop_count)
+                              time_period, a, loop_count,
+                              b)
 
     context = {
         'result': result,
@@ -326,6 +333,7 @@ def algorithms(request):
         'time_period': time_period,
         'a': a,
         'loop_count': loop_count,
+        'b': b,
         'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations']
     }
 

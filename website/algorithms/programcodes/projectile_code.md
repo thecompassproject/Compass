@@ -14,9 +14,10 @@ class projectile
     double x_0, y_0, v_0, h, theta, drag_coeff, mass, g, density, r, q, max_h;
 
     public:
+        //declare public member functions here
         void input(void);
         double euler(double a, double b,double c);
-        //EXERCISE NO 2: declare a function named 'drag' that has 'double' return type and takes one parameter named 'v'
+        //EXERCISE NO 2: declare a function named 'drag' that has 'double' return type and takes one parameter named 'v' having 'double' data type
 
         //EXERCISE NO 3: declare a function named 'calc' that has 'void' return type and doesn't take any parameters
 
@@ -45,7 +46,6 @@ drag coefficient of body etc. */
     cout<<"Enter the initial velocity with which projectile is launched::";
     //EXERCISE NO 7: use the 'cin' command to ask user to input a value that gets assigned to the varaible 'v_o'
 
-    cin>>v_0;
     cout<<"The angle at which the projectile is launched::";
     cin>>theta;
     cout<<"The drag coefficient for body::";
@@ -88,7 +88,7 @@ void projectile::calc()
     ofstream out("proj_trajectory.txt"); // creating a data file for storing the trajectory data
 
     double v_x = v_0 * cos(theta);
-    //EXERCISE NO 10: create a variable 'v_y' of 'double' data type and assign it the value of perpendicular component of v_0
+    //EXERCISE NO 10: create a variable 'v_y' of 'double' data type and assign it the value of perpendicular component of 'v_0'
 
 
 for(double t=0; t<100; t+=h){
@@ -137,4 +137,7 @@ int main()
     return 0;
 }
 
+/*ADDITIONAL EXERCISES:
+1. Read the program documentation and try solving the problem using other numerical methods and observe which one is more acccurate.
+2. Change value of 'g' for other planets and observe the effect on trajectories and maximum height
 ```
