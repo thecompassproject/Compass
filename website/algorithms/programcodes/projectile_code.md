@@ -140,4 +140,5 @@ int main()
 /*ADDITIONAL EXERCISES:
 1. Read the program documentation and try solving the problem using other numerical methods and observe which one is more acccurate.
 2. Change value of 'g' for other planets and observe the effect on trajectories and maximum height
+*/
 ```

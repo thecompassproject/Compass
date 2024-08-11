@@ -1,22 +1,25 @@
 ```cpp
 //(1) include all the necessary libraries
 
-#include <iostream> // <iostream> for input(cin) and output(cout) function
-#include <fstream>  // <fstream> to input/output data into/from data files
-#include <cmath>    // for predefined basic mathematical functions
 
-    using namespace std; // for standard namespace (predefined keywords in c++)
+#include <fstream>  // <fstream> to input/output data into/from data files
+//EXERCISE NO 1: Include 'iostream' and 'cmath' header files
+
+
+
+using namespace std; // for standard namespace (predefined keywords in c++)
 
 //(2) define a class for determining the dynamics of a falling spherical body through a medium
 class falling_body
 {
 
 private:
-    float r, density, g, mass, drag_coeff, mu, vol, den, x, v, h;
+    float r, density, g, mass, drag_coeff, mu, vol, den, x, v, h, newton_drag, stokes_drag, buoyant_drag;
 
 public:
     falling_body();
-    float retard(float);
+    //EXERCISE NO 2: declare a function named 'retard' that has 'float' return type and takes one parameter 'velo' having 'float' data type
+
     void calc();
 };
 
@@ -31,10 +34,12 @@ falling_body::falling_body()
     cin >> mass;
     cout << "\nEnter the density of medium [kg/m^3]:::";
     cin >> density;
-    cout << "\nEnter Acceleration Due to Gravity [m/sec^2]:::";
+    //EXERCISE NO 3: use the 'cout' command to display the following message: '\nEnter Acceleration Due to Gravity [m/sec^2]:::'
+
     cin >> g;
     cout << "\nEnter the Coefficient of drag:::";
-    cin >> drag_coeff;
+    //EXERCISE NO 4: use the 'cin' command to ask user to input values that gets assigned to the varaibles 'drag_coeff'
+
     cout << "\nEnter the Coefficient of viscosity:::";
     cin >> mu;
     cout << "\nEnter the initial value of Height [meter]:::";
@@ -47,10 +52,15 @@ falling_body::falling_body()
 //(3) define an external function for calculating the retardation due to drag at each timestep
 float falling_body::retard(float velo)
 {
+    newton_drag = (((density*4*atan(1)*drag_coeff*r*r)/(2*mass))*velo*velo);    // term for Newtonian drag
 
-    // term corresponding to Newtonian drag                    // term for Stoke's drag         // term for Buoyancy drag
+	stokes_drag = ((6*4*atan(1)*mu*r*velo)/mass);     // term for Stokes' drag
 
-    return g - (((density * 4 * atan(1) * drag_coeff * r * r) / (2 * mass)) * velo * velo) - ((6 * 4 * atan(1) * mu * r * velo) / mass) - ((4 * density * r * r * r * 4 * atan(1) * g) / (3 * mass));
+    //EXERCISE NO 5: assign value '((4*density*r*r*r*4*atan(1)*g)/(3*mass))' to variable 'buoyant_drag'
+
+
+	return g - newton_drag - stokes_drag - buoyant_drag ;
+
 }
 
 //(4) define a calc() function for calculating the position, velocity, acceleration at each timestep
@@ -60,11 +70,12 @@ void falling_body::calc()
     {
 
         vol = (4.0 / 3.0) * M_PI * r * r * r;
-        den = mass / vol;
+        //EXERCISE NO 6: define body density variable 'den' and assign it the value of ratio of variables 'mass' and 'vol'
+
 
         if (den <= density)
         {
-            cout << "HEY, The values Entered Aren't Practical:::\n"; // to terminate the loop if the density of the body < medium
+            cout << "HEY, The values Entered Aren't Practical. Density of the body < Density of  medium. The body will float!\n"; // to terminate the loop if the density of the body < density of  medium
             break;
         }
 
@@ -76,7 +87,8 @@ void falling_body::calc()
 
             //(5) using euler mathod to solve for height and velocity
             x = x - h * v;
-            v = v + h * retard(v);
+            //EXERCISE NO 7: Update the value of 'v' by adding to its previous value, the product of time step 'h' and result of retard function 'retard(v)'
+
 
             if (x < 0)
             {
@@ -94,4 +106,13 @@ int main()
     object.calc();
     return 0;
 }
+/*
+1. Read the program documentation and try solving the problem using other numerical methods and observe which one is more acccurate
+2. Observe the effect of removing one or more drag forces
+4. Play with limits of 'for' loop in the 'calc' function and observe the effects
+*/
+
+
+
+
 ```

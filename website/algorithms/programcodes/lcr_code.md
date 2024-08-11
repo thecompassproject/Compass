@@ -117,6 +117,6 @@ int main() {
 /*ADDITIONAL EXERCISES:
 1. Read the program documentation and try solving the problem using other numerical methods and observe which one is more acccurate
 2. Observe what is the effect of not converting the user input values to appropriate units
-
-
+3. Play with limits of 'for' loop in the 'calc' function and observe the effects
+*/
 ```
