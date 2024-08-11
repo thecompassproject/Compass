@@ -407,12 +407,10 @@
       <div class="mt-3 mb-3">
         <button type="submit" class="btn btn-primary">Run</button>
         <button type="button" onclick="resetForm()" class="btn btn-primary">Clear</button>
+        <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a>
+        <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none" onclick="viewProgramCode()">View program code</button>
       </div>
       
-      <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a>
-
-      <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none" onclick="viewProgramCode()">View program code</button>
-
       <div id="code-embed" class="d-none">
         <div data-pym-src="https://www.jdoodle.com/embed/v1/f2a568536390d8a1?stdin=0&arg=0"></div> 
       </div>  
@@ -422,7 +420,7 @@
     {% for file_name in codeFilesList %} 
     <div id="code-{{ file_name }}" class="codehilite position-relative d-none p-3 rounded mb-5">
         <code>{{ file_name | add:".md" | markdown | safe }}</code>
-        <button id="code-copy-button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
+        <button id="code-copy-button" type="button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
     </div>
   {% endfor %}
 
