@@ -1,64 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Computational Physics GUI</title>
+  {% load static %}  
   {% load markdown_extras %}
-  {% load static %}
-  {% load bootstrap5 %}
-  {% bootstrap_css %}
-  {% bootstrap_javascript %}
-  <link rel="stylesheet" href="{% static 'highlight.css'%}" type="text/css" media="screen">
-</head>
-<!-- CSS styling begins here -->
-<style>
-.align-image{ 
-  align-items: center;
-  justify-content: center;
-}
-.link-home{
-  color: #c1c6fc;
-}
-.link-gui{
-  color: #ff00e0;
-}
-.custom-bg1 {
-  background: rgb(9,9,121);
-  background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(255,0,224,1) 75%, rgba(255,185,247,1) 100%);
-    }
-.custom-bg2 {
-    background-image: url("{% static 'bg3.jpg' %}");
-    }
-    .w-65{
-    width: 65%;
-  }
-    a{
-        color:#c1c6fc;
-        text-decoration: none;
-        &:hover {
-            color: #ff9cf3;
-        }
-    }
-  .bg-custom1 {
-    background: #c1c6fc;
-    color:#000866;
-  }
-  .bg-custom2 {
-    background:#000866;
-    color: #c1c6fc;
-  }
-  .d-none{
-    display:none;
-  }
-  *{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  .copy-button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-  }
-</style>
-<!-- CSS styling ends here -->
+  {% include 'style.html' %}
 <body>
   <div class="container w-65">
     <div class="d-flex custom-bg1 p-3">
@@ -70,34 +14,38 @@
     <div class="p-3 mb-2 text-info-emphasis custom-bg2">
 
       <p class="h4 text-center mb-3"><b> Open Source GUI for Teaching and Implementing Computational Physics Problems</b></p>
+      
       <p id="prog_choice" class="h5 mt-3">Select the program you want to run </p>
-      <div class="row">
+      
+      <div class="row mb-3">
         <div class="col-6">
-          <div class="d-flex justify-content-between">
-            <select name="prog_choice" id="prog" class="form-select form-select-sm mb-3" onchange="perform()">
-              <option {% if prog_choice == 0 %}selected{% endif %} disabled value> Select program </option>
-              <option {% if prog_choice == 1 %}selected{% endif %} value="1">Study of Projectile Motion</option>
-              <option {% if prog_choice == 2 %}selected{% endif %} value="2">Study of LCR Oscillations</option>
-              <option {% if prog_choice == 3 %}selected{% endif %} value="3">Study of Phase Trajectory of a Double Pendulum</option>
-              <option {% if prog_choice == 4 %}selected{% endif %} value="4">Study of Drag Motion of a Spherical Body</option>
-              <option {% if prog_choice == 5 %}selected{% endif %} value="5">Study of Charge in an Electromagnetic Field</option>
-            </select>
-        
-          </div>    
+          <select name="prog_choice" id="prog" class="form-select form-select-sm h-100" onchange="perform()">
+            <option {% if prog_choice == 0 %}selected{% endif %} disabled value> Select program </option>
+            <option {% if prog_choice == 1 %}selected{% endif %} value="1">Study of Projectile Motion</option>
+            <option {% if prog_choice == 2 %}selected{% endif %} value="2">Study of LCR Oscillations</option>
+            <option {% if prog_choice == 3 %}selected{% endif %} value="3">Study of Phase Trajectory of a Double Pendulum</option>
+            <option {% if prog_choice == 4 %}selected{% endif %} value="4">Study of Drag Motion of a Spherical Body</option>
+            <option {% if prog_choice == 5 %}selected{% endif %} value="5">Study of Charge in an Electromagnetic Field</option>
+            <option {% if prog_choice == 6 %}selected{% endif %} value="5">Solving Quadratic Equations</option>
+          </select>
         </div>
+        <div class="col-6">
+          <a id="docs-program" href="#" target="_blank" class="btn btn-primary d-none">View Program Documentation</a>
+        </div>    
       </div>
 
       <p id="method_choice" class="h5">Select the numerical method you want to use </p>
-      <div class="row">
-        <div class="col-6">    
-          <div class="d-flex justify-content-between">
-            <select name="method_choice" value="{{ method_choice }}" id="method" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <option {% if method_choice == 0 %}selected{% endif %} disabled value> Select method </option>
-              <option {% if method_choice == 1 %}selected{% endif %} value="1">Runge-Kutta 4th Order</option>
-              <option {% if method_choice == 2 %}selected{% endif %} value="2">Euler Method</option>
-              <option {% if method_choice == 3 %}selected{% endif %} value="3"">Ralston Method</option>
-            </select>
-          </div>
+      <div class="row mb-3">
+        <div class="col-6">
+          <select name="method_choice" value="{{ method_choice }}" id="method" class="form-select form-select-sm h- 100" onchange="methodDisplayCondition()">
+            <option {% if method_choice == 0 %}selected{% endif %} disabled value> Select method </option>
+            <option {% if method_choice == 1 %}selected{% endif %} value="1">Runge-Kutta 4th Order</option>
+            <option {% if method_choice == 2 %}selected{% endif %} value="2">Euler Method</option>
+            <option {% if method_choice == 3 %}selected{% endif %} value="3"">Ralston Method</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <a id="docs-method" href="#" target="_blank" class="btn btn-primary d-none">View Method Documentation</a>
         </div>
       </div>
 
@@ -107,12 +55,13 @@
         <p id="pendulum-heading" class="h3 d-none">Study of Phase Trajectory of a Double Pendulum</p>
         <p id="drag-heading" class="h3 d-none">Study of Drag Motion of a Spherical Body</p>
         <p id="fields-heading" class="h3 d-none">Study of Charge in an Electromagnetic Field</p>
+        <!-- <p id="quadratic-heading" class="h3 d-none">Solving Quadratic Equations</p> -->
       </div>
 
       <div id="form-fields">
+        
         <div id="m" class="d-none">
-          <p id="mass-field-heading" class="h5">Mass of the projectile (kg) </p>
-          
+          <p id="mass-field-heading" class="h5">Mass of the projectile (kg) </p>  
           <div class="row">
             <div class="col-6">
               <input name="m" value="{{ m }}" class="form-control mb-3" type="text" placeholder="type mass">
@@ -398,22 +347,50 @@
               <input name="Bz" value="{{ Bz }}" class="form-control mb-3" type="text">
             </div>
           </div>
-        </div>  
+        </div>
 
-        <p id="result" class="h5 text"> {{ result }} </p>
+        <!-- <div id="coeff-a" class="d-none">
+          <p class="h5">Coefficient of linear term</p>
+          <div class="row">
+            <div class="col-6">
+              <input name="a" value="{{ a }}" class="form-control mb-3" type="text">
+            </div>
+          </div>
+        </div>
+
+
+        <div id="coeff-b" class="d-none">
+          <p class="h5">Coefficient of linear term</p>
+          <div class="row">
+            <div class="col-6">
+              <input name="b" value="{{ b }}" class="form-control mb-3" type="text">
+            </div>
+          </div>
+        </div>
+
+        <div id="coeff-c" class="d-none">
+          <p class="h5">Coefficient of constant term </p>
+          <div class="row">
+            <div class="col-6">
+              <input name="c" value="{{ c }}" class="form-control mb-3" type="text">
+            </div>
+          </div>
+        </div> -->
+
+        <p id="result" class="h5 text alert alert-success w-50"> {{ result }} </p>
   
       </div>
 
       <div class="mt-3 mb-3">
         <button type="submit" class="btn btn-primary">Run</button>
         <button type="button" onclick="resetForm()" class="btn btn-primary">Clear</button>
-        <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a>
+        <!-- <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a> -->
         <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none" onclick="viewProgramCode()">View program code</button>
       </div>
       
-      <div id="code-embed" class="d-none">
+      <!-- <div id="code-embed" class="d-none">
         <div data-pym-src="https://www.jdoodle.com/embed/v1/f2a568536390d8a1?stdin=0&arg=0"></div> 
-      </div>  
+      </div>   -->
 
     </form>
 
@@ -422,7 +399,7 @@
         <code>{{ file_name | add:".md" | markdown | safe }}</code>
         <button id="code-copy-button" type="button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
     </div>
-  {% endfor %}
+    {% endfor %}
 
   </div>
 
@@ -430,402 +407,6 @@
 
 </body>
 
-<!-- <script src="//onlinegdb.com/embed/js/ABeU-wIzh?theme=dark"></script> -->
-
-<script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"> </script>
-
-<script>
-  async function writeTextToClipboard(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-
-  function copyCode(fileName) {
-    const codeContent = document.querySelector(`#code-${fileName} > code`).innerText;
-    writeTextToClipboard(codeContent);
-    alert("Code copied to clipboard");
-  }
-
-  const codeDisplay = {
-      1: "code-projectile_code",
-      2: "code-lcr_code",
-      3: "code-double_pendulum",
-      4: "code-drag",
-      5: "code-em_oscillations"
-    };
-
-    const docsDisplay = {
-      1: "Documentation_Projectile",
-      5: "Documentation_Charged_Particle_in_EM_Field",
-    };
-
-  function viewProgramCode() {
-
-    const program = document.getElementById("prog").value;
-    
-    Object.values(codeDisplay).forEach((id) => {
-      document.getElementById(id).classList.add("d-none");
-    });
-
-    document.getElementById(codeDisplay[program]).classList.remove("d-none");
-  }
-
-  function resetForm() {
-    window.location = window.location.pathname;
-  }
-
-  function displayCondition(program) {    
-    // Heading divs
-    const projectileHeading = document.getElementById("projectile-heading");
-    const lcrHeading = document.getElementById("lcr-heading");
-    const pendulumHeading = document.getElementById("pendulum-heading");
-    const dragHeading = document.getElementById("drag-heading");
-    const fieldsHeading = document.getElementById("fields-heading");
-
-    const docsButton = document.getElementById("docs");
-    const sourcecodeButton = document.getElementById("source-code");    
-    
-    docsButton.setAttribute("href", "/static/documentation/" + docsDisplay[program] + ".pdf");
-
-    if (program > 0){
-      docsButton.classList.remove("d-none");
-      sourcecodeButton.classList.remove("d-none");
-    }
-
-    else{
-      docsButton.classList.add("d-none");
-      sourcecodeButton.classList.add("d-none");
-    }
-
-    const fields = {
-      "m": {
-        1: true,
-        2: false,
-        3: false,
-        4: true,
-        5: true,
-      },
-      "r": {
-        1: true,
-        2: false,
-        3: false,
-        4: true,
-        5: false,
-      },
-      "th": {
-        1: true,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "v0": {
-        1: true,
-        2: false,
-        3: false,
-        4: true,
-        5: false,
-      },
-      "c": {
-        1: true,
-        2: false,
-        3: false,
-        4: true,
-        5: false,
-      },
-      "L": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "C": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "R": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "i0": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "q0": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "finalTime": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "n": {
-        1: false,
-        2: true,
-        3: false,
-        4: false,
-        5: false,
-      },
-      "m1": {
-        1: false,
-        2: false,
-        3: true,
-        4: false,
-        5: false,
-      },
-      "m2": {
-        1: false,
-        2: false,
-        3: true,
-        4: false,
-        5: false,
-      },
-      "l1": {
-        1: false,
-        2: false,
-        3: true,
-        4: false,
-        5: false,
-      },
-      "l2": {
-        1: false,
-        2: false,
-        3: true,
-        4: false,
-        5: false,
-      },
-      "o11": {
-        1: false,
-        2: false,
-        3: true,
-        4: false,
-        5: false,
-      },
-      "o22": {
-        1: false,
-        2: false,
-        3: true,
-        4: false,
-        5: false,
-      },
-      "g": {
-        1: false,
-        2: false,
-        3: true,
-        4: true,
-        5: false,
-      },
-      "p": {
-        1: false,
-        2: false,
-        3: false,
-        4: true,
-        5: false,
-      },
-      "mu": {
-        1: false,
-        2: false,
-        3: false,
-        4: true,
-        5: false,
-      },
-      "x": {
-        1: false,
-        2: false,
-        3: false,
-        4: true,
-        5: false,
-      },
-      "q": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "vx": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "vy": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "vz": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "Ex": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "Ey": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "Ez": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "Bx": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "By": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-      "Bz": {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: true,
-      },
-    };
-
-    
-    if (program == 1) {
-      projectileHeading.classList.remove("d-none");      
-      // projectileHeading.classList.remove("d-none");
-      lcrHeading.classList.add("d-none");
-      pendulumHeading.classList.add("d-none");
-      dragHeading.classList.add("d-none");
-      fieldsHeading.classList.add("d-none");
-    }
-    
-    else if (program == 2) {
-      projectileHeading.classList.add("d-none");
-      lcrHeading.classList.remove("d-none");
-      pendulumHeading.classList.add("d-none");
-      dragHeading.classList.add("d-none");
-      fieldsHeading.classList.add("d-none");
-    }
-    
-    else if (program == 3) {
-      projectileHeading.classList.add("d-none");
-      lcrHeading.classList.add("d-none");
-      pendulumHeading.classList.remove("d-none");
-      dragHeading.classList.add("d-none");
-      fieldsHeading.classList.add("d-none");
-    }
-
-    else if (program == 4) {
-      projectileHeading.classList.add("d-none");
-      lcrHeading.classList.add("d-none");
-      pendulumHeading.classList.add("d-none");
-      dragHeading.classList.remove("d-none");
-      fieldsHeading.classList.add("d-none");
-    }
-
-    else if (program == 5) {
-      projectileHeading.classList.add("d-none");
-      lcrHeading.classList.add("d-none");
-      pendulumHeading.classList.add("d-none");
-      dragHeading.classList.add("d-none");
-      fieldsHeading.classList.remove("d-none");
-    }
-    
-    Object.entries(fields).forEach(([fieldId, displayValue]) => {
-        const field = document.getElementById(fieldId);
-        const shouldDisplay = displayValue[program];
-        if (shouldDisplay) {
-          field.classList.remove("d-none");
-        }
-        else {
-          field.classList.add("d-none");
-        }
-      })
-    
-    const massFieldHeading = document.getElementById("mass-field-heading");
-    if (program == 1) {
-      massFieldHeading.innerText = "Mass of the projectile (kg)";
-    }
-    else if (program == 4) {
-      massFieldHeading.innerText = "Mass of the body (kg)";
-    }
-    else if (program == 5) {
-      massFieldHeading.innerText = "Mass of the particle (kg)";
-    }
-
-  const radiusFieldHeading = document.getElementById("radius-field-heading");
-    if (program == 1) {
-      radiusFieldHeading.innerText = "Radius of the projectile (m)";
-    }
-    else if (program == 4) {
-      radiusFieldHeading.innerText = "Radius of the body (m)";
-    }
-
-  const ini_velFieldHeading = document.getElementById("ini_vel-field-heading");
-    if (program == 1) {
-      ini_velFieldHeading.innerText = "Initial velocity of the projectile (m/sec)";
-    }
-    else if (program == 4) {
-      ini_velFieldHeading.innerText = "Initial velocity of the body (m/sec)";
-    }
-  }
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const program = urlParams.get('prog_choice');
-    displayCondition(program);
-  })
-
-  function perform(){
-    const program=document.getElementById("prog").value;
-    displayCondition(program);
-    Object.values(codeDisplay).forEach((id) => {
-      document.getElementById(id).classList.add("d-none");
-    });
-
-    document.getElementById("result").classList.add("d-none");
-  }
-  
-  
-</script>
+{% include 'script.html' %}
 
 </html>

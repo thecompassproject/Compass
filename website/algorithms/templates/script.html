@@ -1,0 +1,453 @@
+<!-- <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"> </script> -->
+
+<script>
+
+  async function writeTextToClipboard(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  function copyCode(fileName) {
+    const codeContent = document.querySelector(`#code-${fileName} > code`).innerText;
+    writeTextToClipboard(codeContent);
+    alert("Code copied to clipboard");
+  }
+
+  const codeDisplay = {
+      1: "code-projectile_code",
+      2: "code-lcr_code",
+      3: "code-double_pendulum",
+      4: "code-drag",
+      5: "code-em_oscillations"
+    };
+
+    const programdocsDisplay = {
+      1: "Documentation_Projectile",
+      2: "Documentation_LCR_Oscillation",
+      3: "Documentation_Double_Pendulum",
+      4: "Documentation_Falling_Spherical_body",
+      5: "Documentation_Charged_Particle_in_EM_Field",
+    };
+
+    const methodDocsDisplay = {
+      1: "Documentation_Runge_Kutta_Method",
+      2: "Documentation_Euler_method",
+      3: "Documentation_Euler_method",
+    };
+
+  function viewProgramCode() {
+
+    const program = document.getElementById("prog").value;
+    
+    Object.values(codeDisplay).forEach((id) => {
+      document.getElementById(id).classList.add("d-none");
+    });
+
+    document.getElementById(codeDisplay[program]).classList.remove("d-none");
+  }
+
+  function resetForm() {
+    window.location = window.location.pathname;
+  }
+
+  function displayCondition(program) {    
+    // Heading divs
+    const projectileHeading = document.getElementById("projectile-heading");
+    const lcrHeading = document.getElementById("lcr-heading");
+    const pendulumHeading = document.getElementById("pendulum-heading");
+    const dragHeading = document.getElementById("drag-heading");
+    const fieldsHeading = document.getElementById("fields-heading");
+
+    const programdocsButton = document.getElementById("docs-program");
+    const sourcecodeButton = document.getElementById("source-code");    
+    
+    programdocsButton.setAttribute("href", "/static/documentation/" + programdocsDisplay[program] + ".pdf");
+
+    if (program > 0){
+      programdocsButton.classList.remove("d-none");
+      sourcecodeButton.classList.remove("d-none");
+    }
+
+    else{
+      programdocsButton.classList.add("d-none");
+      sourcecodeButton.classList.add("d-none");
+    }
+
+    const fields = {
+      "m": {
+        1: true,
+        2: false,
+        3: false,
+        4: true,
+        5: true,
+        6: false,
+      },
+      "r": {
+        1: true,
+        2: false,
+        3: false,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "th": {
+        1: true,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "v0": {
+        1: true,
+        2: false,
+        3: false,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "c": {
+        1: true,
+        2: false,
+        3: false,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "L": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "C": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "R": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "i0": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "q0": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "finalTime": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "n": {
+        1: false,
+        2: true,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "m1": {
+        1: false,
+        2: false,
+        3: true,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "m2": {
+        1: false,
+        2: false,
+        3: true,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "l1": {
+        1: false,
+        2: false,
+        3: true,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "l2": {
+        1: false,
+        2: false,
+        3: true,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "o11": {
+        1: false,
+        2: false,
+        3: true,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "o22": {
+        1: false,
+        2: false,
+        3: true,
+        4: false,
+        5: false,
+        6: false,
+      },
+      "g": {
+        1: false,
+        2: false,
+        3: true,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "p": {
+        1: false,
+        2: false,
+        3: false,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "mu": {
+        1: false,
+        2: false,
+        3: false,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "x": {
+        1: false,
+        2: false,
+        3: false,
+        4: true,
+        5: false,
+        6: false,
+      },
+      "q": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "vx": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "vy": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "vz": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "Ex": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "Ey": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "Ez": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "Bx": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "By": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+      "Bz": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: true,
+        6: false,
+      },
+    };
+
+    
+    if (program == 1) {
+      projectileHeading.classList.remove("d-none");      
+      // projectileHeading.classList.remove("d-none");
+      lcrHeading.classList.add("d-none");
+      pendulumHeading.classList.add("d-none");
+      dragHeading.classList.add("d-none");
+      fieldsHeading.classList.add("d-none");
+    }
+    
+    else if (program == 2) {
+      projectileHeading.classList.add("d-none");
+      lcrHeading.classList.remove("d-none");
+      pendulumHeading.classList.add("d-none");
+      dragHeading.classList.add("d-none");
+      fieldsHeading.classList.add("d-none");
+    }
+    
+    else if (program == 3) {
+      projectileHeading.classList.add("d-none");
+      lcrHeading.classList.add("d-none");
+      pendulumHeading.classList.remove("d-none");
+      dragHeading.classList.add("d-none");
+      fieldsHeading.classList.add("d-none");
+    }
+
+    else if (program == 4) {
+      projectileHeading.classList.add("d-none");
+      lcrHeading.classList.add("d-none");
+      pendulumHeading.classList.add("d-none");
+      dragHeading.classList.remove("d-none");
+      fieldsHeading.classList.add("d-none");
+    }
+
+    else if (program == 5) {
+      projectileHeading.classList.add("d-none");
+      lcrHeading.classList.add("d-none");
+      pendulumHeading.classList.add("d-none");
+      dragHeading.classList.add("d-none");
+      fieldsHeading.classList.remove("d-none");
+    }
+    
+    Object.entries(fields).forEach(([fieldId, displayValue]) => {
+        const field = document.getElementById(fieldId);
+        const shouldDisplay = displayValue[program];
+        if (shouldDisplay) {
+          field.classList.remove("d-none");
+        }
+        else {
+          field.classList.add("d-none");
+        }
+      })
+    
+    const massFieldHeading = document.getElementById("mass-field-heading");
+    if (program == 1) {
+      massFieldHeading.innerText = "Mass of the projectile (kg)";
+    }
+    else if (program == 4) {
+      massFieldHeading.innerText = "Mass of the body (kg)";
+    }
+    else if (program == 5) {
+      massFieldHeading.innerText = "Mass of the particle (kg)";
+    }
+
+  const radiusFieldHeading = document.getElementById("radius-field-heading");
+    if (program == 1) {
+      radiusFieldHeading.innerText = "Radius of the projectile (m)";
+    }
+    else if (program == 4) {
+      radiusFieldHeading.innerText = "Radius of the body (m)";
+    }
+
+  const ini_velFieldHeading = document.getElementById("ini_vel-field-heading");
+    if (program == 1) {
+      ini_velFieldHeading.innerText = "Initial velocity of the projectile (m/sec)";
+    }
+    else if (program == 4) {
+      ini_velFieldHeading.innerText = "Initial velocity of the body (m/sec)";
+    }
+  }
+
+  function methodDisplayCondition(methodFromUrl) {
+    const method = document.getElementById("method").value ?? methodFromUrl; 
+    const methodDocsButton = document.getElementById("docs-method");
+    if (method > 0){
+      methodDocsButton.classList.remove("d-none");
+    }
+
+    else{
+      methodDocsButton.classList.add("d-none");
+    } 
+    methodDocsButton.setAttribute("href", "/static/documentation/" + methodDocsDisplay[method] + ".pdf");
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const program = urlParams.get('prog_choice');
+    const method = urlParams.get('method_choice');
+    displayCondition(program);
+    methodDisplayCondition(method);
+  })
+
+  function perform(){
+    console.log("Hello");
+    const program=document.getElementById("prog").value;
+    displayCondition(program);
+    Object.values(codeDisplay).forEach((id) => {
+      document.getElementById(id).classList.add("d-none");
+    });
+    
+
+    document.getElementById("result").classList.add("d-none");
+  }
+  
+</script>

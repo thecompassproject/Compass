@@ -1,0 +1,64 @@
+<head>
+  <title>Computational Physics GUI</title>
+  {% load markdown_extras %}
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %} 
+
+  <style>
+    .align-image{ 
+      align-items: center;
+      justify-content: center;
+    }
+    .link-home{
+      color: #c1c6fc;
+    }
+    .link-gui{
+      color: #ff00e0;
+    }
+    .custom-bg1 {
+      background: rgb(9,9,121);
+      background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(255,0,224,1) 75%, rgba(255,185,247,1) 100%);
+    }
+    .custom-bg2 {
+        background-image: url("{% static 'bg3.jpg' %}");
+    }
+    .w-65{
+        width: 65%;
+    }
+    
+    a{
+      color:#c1c6fc;
+      text-decoration: none;
+      &:hover {
+        color: #ff9cf3;
+      }
+    }
+
+    .bg-custom1 {
+      background: #c1c6fc;
+      color:#000866;
+    }
+    .bg-custom2 {
+      background:#000866;
+      color: #c1c6fc;
+    }
+    .d-none{
+      display:none;
+    }
+      
+    *{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+  </style>
+  <link rel="stylesheet" href="{% static 'highlight.css'%}" type="text/css" media="screen">
+</head>
+
