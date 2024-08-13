@@ -11,23 +11,15 @@
       align-items: center;
       justify-content: center;
     }
-    .link-home{
+    .link-default{
       color: #c1c6fc;
     }
-    .link-gui{
+    .link-active{
       color: #ff00e0;
     }
-    .custom-bg1 {
-      background: rgb(9,9,121);
-      background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(255,0,224,1) 75%, rgba(255,185,247,1) 100%);
+    .btn-primary {
+      background-color: rgba(9, 9, 121, 1);
     }
-    .custom-bg2 {
-        background-image: url("{% static 'bg3.jpg' %}");
-    }
-    .w-65{
-        width: 65%;
-    }
-    
     a{
       color:#c1c6fc;
       text-decoration: none;
@@ -35,27 +27,59 @@
         color: #ff9cf3;
       }
     }
-
-    .bg-custom1 {
-      background: #c1c6fc;
-      color:#000866;
-    }
-    .bg-custom2 {
-      background:#000866;
-      color: #c1c6fc;
-    }
-    .d-none{
-      display:none;
-    }
-      
-    *{
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
     .copy-button {
       position: absolute;
       top: 8px;
       right: 8px;
+    }
+
+    .nav {
+      width: 128px;
+      height: 34px;
+      margin: 0 auto;
+      display: block;
+      padding: 0px;
+      line-height: 32px;
+    }
+    .custom-bg1 {
+      background: rgb(9, 9, 121);
+      background: linear-gradient(
+        90deg,
+        rgba(9, 9, 121, 1) 0%,
+        #ff00e0 75%,
+        rgba(255, 185, 247, 1) 100%
+      );
+    }
+    .custom-bg2 {
+      background-image: url("{% static 'bg3.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .bg-custom1 {
+      background: #c1c6fc;
+      color: #000866;
+    }
+    .bg-custom2 {
+      background: #000866;
+      color: #c1c6fc;
+    }
+    .d-none {
+      display: none;
+    }
+    * {
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+    .list-circle {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #ff00e0;
+      border-radius: 50%;
+    }
+    .list-line {
+      flex: 1 1 auto;
+      min-height: 60px;
+      border-left: 2px solid #ff00e0;
     }
 
   </style>
