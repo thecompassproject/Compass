@@ -13,7 +13,7 @@
       </div>
     </div>
 
-     <div class="row custom-bg2 py-5" style="flex: 1 1 auto;">
+     <div class="row custom-bg2 py-1" style="flex: 1 1 auto;">
         <div class="col-8 mx-auto"">
           <div class="row">
             <div class="col-12 p-4">
@@ -33,7 +33,7 @@
                         <option {% if prog_choice == 3 %}selected{% endif %} value="3">Study of Phase Trajectory of a Double Pendulum</option>
                         <option {% if prog_choice == 4 %}selected{% endif %} value="4">Study of Drag Motion of a Spherical Body</option>
                         <option {% if prog_choice == 5 %}selected{% endif %} value="5">Study of Charge in an Electromagnetic Field</option>
-                        <option {% if prog_choice == 6 %}selected{% endif %} value="5">Solving Quadratic Equations</option>
+                        <!-- <option {% if prog_choice == 6 %}selected{% endif %} value="5">Solving Quadratic Equations</option> -->
                       </select>
                     </div>
                     <div class="col-6">
@@ -412,18 +412,30 @@
             </div>
           </div>
         </div> -->
-
-        <p id="result" class="{% if result == '' %}d-none{% endif %} h5 text alert alert-success w-50"> {{ result }} </p>
   
       </div>
 
-    {% for file_name in codeFilesList %} 
-    <div id="code-{{ file_name }}" class="codehilite position-relative d-none p-3 rounded mb-5">
-        <code>{{ file_name | add:".md" | markdown | safe }}</code>
-        <button id="code-copy-button" type="button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
-    </div>
-    {% endfor %}
+      <div class="row custom-bg2">
+        <div class="col-8 mx-auto">
 
+          {% for file_name in codeFilesList %} 
+          <div id="code-{{ file_name }}" class="codehilite position-relative d-none p-3 rounded mb-5">
+            <a id="onlinegdb-link" href="https://www.onlinegdb.com/" target="_blank" class="btn btn-light px-3 float-justify">Edit Online: OnlineGDB</a>
+            <a id="codeblocks-link" href="/codeblocks/" target="_blank" class="btn btn-light px-3 float-justify">Edit Offline: CodeBlocks</a>
+            <br>
+            <br>
+            <code>{{ file_name | add:".md" | markdown | safe }}</code>
+            <button id="code-copy-button" type="button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
+              
+          </div>
+          {% endfor %}
+      
+        </div>
+      </div>
+
+    </div>  
+    
+  
   </div>
   {% include 'footer.html' %}
 

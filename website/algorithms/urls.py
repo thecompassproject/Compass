@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('gui/', views.algorithms, name='gui'),
-    path('', views.homePage, name='home')
+    path('', views.homePage, name='home'),
+    path('codeblocks/', views.codeBlocks, name='codeblocks')
 ]

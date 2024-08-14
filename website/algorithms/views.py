@@ -1,3 +1,4 @@
+import subprocess
 import urllib.parse
 from django.http import HttpResponse
 from django.template import loader
@@ -354,8 +355,16 @@ def homePage(request):
     return HttpResponse(template.render(context, request))
 
 
-def download(request):
-    response = HttpResponse(content_type='text/plain')
-    response['Content-Disposition'] = 'attachment; filename="filename.txt"'
-    response.write('Hello')
-    return response
+# def download(request):
+#     response = HttpResponse(content_type='text/plain')
+#     response['Content-Disposition'] = 'attachment; filename="filename.txt"'
+#     response.write('Hello')
+#     return response
+
+
+def codeBlocks(request):
+    winView = 'CodeBlocks/codeblocks.exe'
+    # a = subprocess.run(winView, shell=False)
+    a = subprocess.Popen([winView])
+    print(a)
+    return HttpResponse('Happy learning!', request)
