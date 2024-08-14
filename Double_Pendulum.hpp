@@ -75,7 +75,6 @@ public:
             std::cerr << "Error opening pipe to gnuplot" << std::endl;
             return;
         }
-        fprintf(gnuplotPipe, "set size ratio -1 \n");
         fprintf(gnuplotPipe, "set title 'Double Pendulum Phase Trajectory'\n");
         fprintf(gnuplotPipe, "set xlabel 'Angular Displacement'\n");
         fprintf(gnuplotPipe, "set ylabel 'Angular Velocity'\n");

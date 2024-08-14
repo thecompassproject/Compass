@@ -11,23 +11,6 @@ except ImportError:
     import build.cpp_function as cpp_function
 
 
-# import urllib
-# from django.shortcuts import render
-# import matplotlib.pyplot as plt
-# import io
-# import base64
-
-# def home(request):
-#     plt.plot(range(10))
-#     fig = plt.gcf()
-#     buf = io.BytesIO()
-#     fig.savefig(buf, format='png')
-#     buf.seek(0)
-#     string = base64.b64encode(buf.read())
-#     uri = urllib.parse.quote(string)
-#     return render(request, 'gui.html', {'data': uri})
-
-
 def algorithms(request):
     prog_choice = request.GET.get('prog_choice')
     if prog_choice is not None and len(prog_choice) > 0:
@@ -338,13 +321,6 @@ def algorithms(request):
         'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations'],
     }
 
-    # if True:
-
-    #     response = HttpResponse(content_type='text/plain')
-    #     response['Content-Disposition'] = 'attachment; filename="filename.txt"'
-    #     response.write(result)
-    #     return response
-
     template = loader.get_template('gui.html')
     return HttpResponse(template.render(context, request))
 
@@ -355,16 +331,8 @@ def homePage(request):
     return HttpResponse(template.render(context, request))
 
 
-# def download(request):
-#     response = HttpResponse(content_type='text/plain')
-#     response['Content-Disposition'] = 'attachment; filename="filename.txt"'
-#     response.write('Hello')
-#     return response
-
-
 def codeBlocks(request):
     winView = 'CodeBlocks/codeblocks.exe'
-    # a = subprocess.run(winView, shell=False)
     a = subprocess.Popen([winView])
     print(a)
     return HttpResponse('Happy learning!', request)

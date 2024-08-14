@@ -33,7 +33,6 @@
                         <option {% if prog_choice == 3 %}selected{% endif %} value="3">Study of Phase Trajectory of a Double Pendulum</option>
                         <option {% if prog_choice == 4 %}selected{% endif %} value="4">Study of Drag Motion of a Spherical Body</option>
                         <option {% if prog_choice == 5 %}selected{% endif %} value="5">Study of Charge in an Electromagnetic Field</option>
-                        <!-- <option {% if prog_choice == 6 %}selected{% endif %} value="5">Solving Quadratic Equations</option> -->
                       </select>
                     </div>
                     <div class="col-6">
@@ -356,34 +355,6 @@
                       </div>
                     </div>
 
-                    <!-- <div id="coeff-a" class="d-none">
-                      <p class="h5">Coefficient of linear term</p>
-                      <div class="row">
-                        <div class="col-6">
-                          <input name="a" value="{{ a }}" class="form-control mb-3" type="text">
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div id="coeff-b" class="d-none">
-                      <p class="h5">Coefficient of linear term</p>
-                      <div class="row">
-                        <div class="col-6">
-                          <input name="b" value="{{ b }}" class="form-control mb-3" type="text">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div id="coeff-c" class="d-none">
-                      <p class="h5">Coefficient of constant term </p>
-                      <div class="row">
-                        <div class="col-6">
-                          <input name="c" value="{{ c }}" class="form-control mb-3" type="text">
-                        </div>
-                      </div>
-                    </div> -->
-
                     <p id="result" class="{% if result == '' %}d-none{% endif %} h5 text alert alert-success w-50"> {{ result }} </p>
               
                   </div>
@@ -391,27 +362,14 @@
                   <div class="mt-3 mb-3">
                     <button type="submit" class="btn btn-primary px-3">Run</button>
                     <button type="button" onclick="resetForm()" class="btn btn-primary px-3">Clear</button>
-                    <!-- <a id="docs" href="#" target="_blank" class="btn btn-primary mt-3 mb-3 d-none">View Documentation</a> -->
-                    <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none px-3" onclick="viewProgramCode()">View program code</button>
+                    <button id="source-code" type="button" class="btn btn-primary mt-3 mb-3 d-none px-3" onclick="viewProgramCode()">View Program Code</button>
                   </div>
                   
-                  <!-- <div id="code-embed" class="d-none">
-                    <div data-pym-src="https://www.jdoodle.com/embed/v1/f2a568536390d8a1?stdin=0&arg=0"></div> 
-                  </div>   -->
                 </div>
               </form>
             </div>
           </div>
         </div>
-
-        <!-- <div id="coeff-c" class="d-none">
-          <p class="h5">Coefficient of constant term </p>
-          <div class="row">
-            <div class="col-6">
-              <input name="c" value="{{ c }}" class="form-control mb-3" type="text">
-            </div>
-          </div>
-        </div> -->
   
       </div>
 

@@ -66,6 +66,7 @@ public:
         double Vx = _V0 * cos(_th);
         double Vy = _V0 * sin(_th);
         double mh = pow((_V0 * sin(_th)), 2) / (2 * 9.8);
+        double max_h = 0.0;
 
         double h = 0.001;
         for (double t = 0; t < 100; t += h)
@@ -100,6 +101,11 @@ public:
             {
                 break;
             }
+
+            if (Y0 > max_h)
+            {
+                max_h = Y0;
+            }
         }
         out.close();
 
@@ -127,7 +133,7 @@ public:
         fprintf(gnuplotPipe, ss);
 
         std::string response;
-        const char *msg = response.append("The maximum height is: ").append(to_string(mh)).append(" m").c_str();
+        const char *msg = response.append("Maximum height (without drag): ").append(to_string(mh)).append(" m. \n").append("Maximum height (with drag): ").append(to_string(max_h)).append(" m. \n").append("Range (with drag): ").append(to_string(X0)).append(" m.").c_str();
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);
