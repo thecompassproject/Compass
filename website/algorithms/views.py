@@ -11,7 +11,14 @@ except ImportError:
     import build.cpp_function as cpp_function
 
 
+def homePage(request):
+    context = {}
+    template = loader.get_template('home.html')
+    return HttpResponse(template.render(context, request))
+
+
 def algorithms(request):
+
     prog_choice = request.GET.get('prog_choice')
     if prog_choice is not None and len(prog_choice) > 0:
         prog_choice = float(prog_choice)
@@ -322,12 +329,6 @@ def algorithms(request):
     }
 
     template = loader.get_template('gui.html')
-    return HttpResponse(template.render(context, request))
-
-
-def homePage(request):
-    context = {}
-    template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
 
 
