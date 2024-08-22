@@ -36,7 +36,22 @@ public:
         A = 0;
         B = 0;
 
-        std::ofstream out("drag1.dat");
+        char *file_name = "drag.dat"; // give a default name to the file
+        if (_method_choice == 1.0)
+        {
+            file_name = "drag_rk4.dat";
+        }
+        else if (_method_choice == 2.0)
+        {
+            file_name = "drag_euler.dat";
+        }
+
+        else if (_method_choice == 3.0)
+        {
+            file_name = "drag_rals.dat";
+        }
+
+        std::ofstream out(file_name);
         for (float t = 0.0; t > -1; t += h)
         {
             a = ono(A, _v, B);
@@ -85,12 +100,22 @@ public:
             std::cerr << "Error opening pipe to gnuplot" << std::endl;
             return;
         }
+
+        std::string s;
+        const char *ss = s.append("plot '").append(file_name).append("' using 1:2 with lines title 'Height'\n").c_str();
+        const char *sss = s.append("replot '").append(file_name).append("' using 1:3 with lines title 'Velocity'\n").c_str();
+        const char *ssss = s.append("replot '").append(file_name).append("' using 1:4 with lines title 'Velocity'\n").c_str();
+
         fprintf(gnuplotPipe, "set title 'Motion Of Spherical Body'\n");
         fprintf(gnuplotPipe, "set xlabel 'Time'\n");
         fprintf(gnuplotPipe, "set ylabel 'Height/Velocity/Acceleration'\n");
-        fprintf(gnuplotPipe, "plot 'drag1.dat' using 1:2 with lines title 'Height'\n");
-        fprintf(gnuplotPipe, "replot 'drag1.dat' using 1:3 with lines title 'Velocity'\n");
-        fprintf(gnuplotPipe, "replot 'drag1.dat' using 1:4 with lines title 'Acceleration'\n");
+        // fprintf(gnuplotPipe, "plot 'drag1.dat' using 1:2 with lines title 'Height'\n");
+        // fprintf(gnuplotPipe, "replot 'drag1.dat' using 1:3 with lines title 'Velocity'\n");
+        // fprintf(gnuplotPipe, "replot 'drag1.dat' using 1:4 with lines title 'Acceleration'\n");
+
+        fprintf(gnuplotPipe, ss);
+        fprintf(gnuplotPipe, sss);
+        fprintf(gnuplotPipe, ssss);
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);

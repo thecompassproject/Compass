@@ -3,3 +3,4 @@ build
 ThirdPartyLib
 __pycache__
 *.dat
+node_modules

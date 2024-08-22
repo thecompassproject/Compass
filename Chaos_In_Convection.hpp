@@ -33,7 +33,23 @@ public:
     void sap()
     {
         double h = 0.01;
-        std::ofstream out("chaos.dat");
+        char *file_name = "convection.dat"; // give a default name to the file
+        if (_method_choice == 1.0)
+        {
+            file_name = "convection_rk4.dat";
+        }
+        else if (_method_choice == 2.0)
+        {
+            file_name = "convection_euler.dat";
+        }
+
+        else if (_method_choice == 3.0)
+        {
+            file_name = "convection_rals.dat";
+        }
+
+        std::ofstream out(file_name);
+
         for (double i = 0; i < 10000; i++)
         {
 
@@ -88,11 +104,15 @@ public:
             return;
         }
 
+        std::string s;
+        const char *ss = s.append("splot '").append(file_name).append("' using 1:2 with lines title 'Convection'\n").c_str();
+
         fprintf(gnuplotPipe, "set title 'Chaotic Motion'\n");
         fprintf(gnuplotPipe, "set xlabel 'X Position'\n");
         fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
         fprintf(gnuplotPipe, "set zlabel 'Z Position'\n");
-        fprintf(gnuplotPipe, "splot 'chaos.dat' using 1:2:3 with lines title 'Trajectory'\n");
+        // fprintf(gnuplotPipe, "splot 'chaos.dat' using 1:2:3 with lines title 'Trajectory'\n");
+        fprintf(gnuplotPipe, ss);
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);
