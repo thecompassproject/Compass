@@ -3,3 +3,5 @@ build
 ThirdPartyLib
 __pycache__
 *.dat
+dist
+*.spec

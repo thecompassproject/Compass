@@ -6,3 +6,4 @@ cmake --build .
 cd ..
 rm -rf "website/build"
 mv build website
+touch website/build/__init__.py
