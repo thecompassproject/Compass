@@ -7,27 +7,31 @@
   {% bootstrap_javascript %} 
 
   <style>
+    .nav-bar{
+      /* list-style-type: circle;
+      margin: 100;
+      padding: 100;
+      overflow: hidden; */
+      position: fixed;
+      /* top: 100; */
+      width: 100%;
+    }
+    
     .align-image{ 
       align-items: center;
       justify-content: center;
     }
     .link-default{
-      color: #c1c6fc;
+      color: #ffffff;
+      /* color: #000000; */
     }
     .link-active{
-      color: #ff00e0;
+      color: #f500e9;
     }
     .btn-primary {
       background-color: rgba(9, 9, 121, 1);
     }
-    .custom-bg2 {
-        background-image: url("{% static 'bg3.jpg' %}");
-    }
-    
-    .w-65{
-        width: 65%;
-    }
-    
+
     a{
       color:#c1c6fc;
       text-decoration: none;
@@ -35,11 +39,12 @@
         color: #ff9cf3;
       }
     }
+
     .copy-button {
       position: absolute;
-      top: 8px;
-      right: 8px;
-    }
+      top: 16px;
+      right: 16px;
+    } 
 
     .nav {
       width: 128px;
@@ -48,9 +53,10 @@
       display: block;
       padding: 0px;
       line-height: 32px;
+      position: fixed;
     }
+
     .custom-bg1 {
-      background: rgb(9, 9, 121);
       background: linear-gradient(
         90deg,
         rgba(9, 9, 121, 1) 0%,
@@ -58,19 +64,55 @@
         rgba(255, 185, 247, 1) 100%
       );
     }
-    .custom-bg2 {
-      background-image: url("{% static 'bg3.jpg' %}");
+
+    .intro-bg {
+      background-image: url("{% static 'bg7.jpg' %}");
       background-repeat: no-repeat;
       background-size: cover;
     }
-    .bg-custom1 {
-      background: #c1c6fc;
-      color: #000866;
+
+    .steps-bg {
+      background-image: url("{% static 'bg15.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
-    .bg-custom2 {
-      background: #000866;
-      color: #c1c6fc;
+
+    .form-bg {
+      background-image: url("{% static 'bg15.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
+    
+    .code-bg {
+      background-image: url("{% static 'bg7.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .footer-bg {
+      background: linear-gradient(
+        90deg,
+        rgba(9, 9, 121, 1) 0%,
+        #ff00e0 75%,
+        rgba(255, 185, 247, 1) 100%
+      );
+    }
+    
+  .intro-text{
+    color: whitesmoke;
+    /* color: black; */
+  }
+
+  .steps-text{
+    /* color: whitesmoke; */
+    color: black;
+  }
+
+  .form-text{
+    /* color: whitesmoke; */
+    color: black;
+  }
+
     .d-none {
       display: none;
     }
@@ -78,6 +120,7 @@
       font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
     }
+
     .list-circle {
       width: 24px;
       height: 24px;

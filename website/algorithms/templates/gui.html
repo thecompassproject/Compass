@@ -4,7 +4,7 @@
   {% load markdown_extras %}
   {% include 'style.html' %}
 <body class="container-fluid w-100 min-vh-100 d-flex flex-column">
-    <div class="row custom-bg1">
+    <div class="row custom-bg1 nav-bar">
       <div class="col-8 mx-auto">
         <div class="d-flex p-3 w-50">
           <a href="/" class="me-5 link-default">Home</a>
@@ -13,14 +13,13 @@
       </div>
     </div>
 
-     <div class="row custom-bg2 py-1" style="flex: 1 1 auto;">
+     <div class="form-bg row py-1" style="flex: 1 1 auto;">
         <div class="col-8 mx-auto"">
           <div class="row">
             <div class="col-12 p-4">
               <form method="get" action="/gui">
-                <div class="mb-2 row text-info-emphasis">
-
-                  <h4 class="mb-4"><b> Open Source GUI for Teaching and Implementing Computational Physics Problems</b></h4>
+                <div class="mb-2 row text-info-emphasis form-text mt-5">
+                  <h4 class="mb-4 mt-5"><b> Open Source GUI for Teaching and Implementing Computational Physics</b></h4>
                   
                   <p id="prog_choice" class="h5 mt-3">Select the program you want to run </p>
                   
@@ -33,6 +32,7 @@
                         <option {% if prog_choice == 3 %}selected{% endif %} value="3">Study of Phase Trajectory of a Double Pendulum</option>
                         <option {% if prog_choice == 4 %}selected{% endif %} value="4">Study of Drag Motion of a Spherical Body</option>
                         <option {% if prog_choice == 5 %}selected{% endif %} value="5">Study of Charge in an Electromagnetic Field</option>
+                        <option {% if prog_choice == 6 %}selected{% endif %} value="6">Study of Lorenz Convection in Fluids</option>
                       </select>
                     </div>
                     <div class="col-6">
@@ -61,7 +61,7 @@
                     <p id="pendulum-heading" class="h3 d-none">Study of Phase Trajectory of a Double Pendulum</p>
                     <p id="drag-heading" class="h3 d-none">Study of Drag Motion of a Spherical Body</p>
                     <p id="fields-heading" class="h3 d-none">Study of Charge in an Electromagnetic Field</p>
-                    <!-- <p id="quadratic-heading" class="h3 d-none">Solving Quadratic Equations</p> -->
+                    <p id="convection-heading" class="h3 d-none">Study Lorenz Convection in Fluids</p>
                   </div>
 
                   <div id="form-fields">
@@ -257,7 +257,7 @@
                     
 
                     <div id="x" class="d-none">
-                      <p class="h5">Initial height (m) </p>
+                      <p id="x-field-heading" class="h5">Initial height (m) </p>
                       <div class="row">
                         <div class="col-6">
                           <input name="x" value="{{ x }}" class="form-control mb-3" type="text" placeholder="type initial height">
@@ -355,6 +355,24 @@
                       </div>
                     </div>
 
+                    <div id="y" class="d-none">
+                      <p class="h5">y-parameter</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <input name="y" value="{{ y }}" class="form-control mb-3" type="text">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="z" class="d-none">
+                      <p class="h5">z-parameter</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <input name="z" value="{{ z }}" class="form-control mb-3" type="text">
+                        </div>
+                      </div>
+                    </div>
+
                     <p id="result" class="{% if result == '' %}d-none{% endif %} h5 text alert alert-success w-50"> {{ result }} </p>
               
                   </div>
@@ -373,7 +391,7 @@
   
       </div>
 
-      <div class="row custom-bg2">
+      <div class="row code-bg">
         <div class="col-8 mx-auto">
 
           {% for file_name in codeFilesList %} 

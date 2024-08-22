@@ -9,7 +9,7 @@
     {% include 'style.html' %}
   </head>
   <body class="container-fluid w-100 min-vh-100">
-    <div class="row custom-bg1">
+    <div class="custom-bg1 row nav-bar">
       <div class="col-8 mx-auto">
         <div class="d-flex p-3 w-50">
           <a href="/" class="me-5 link-active">Home</a>
@@ -17,51 +17,56 @@
         </div>
       </div>
     </div>
+    
+      <div class="intro-text intro-bg row py-5">
+        <div class="col-8 mx-auto"">
+          <div class="row">
+            <div class="col-7 p-4">
+              <br><br><br><br>
+              <h1 class="mb-4">
+                Welcome to Compass - <br>Your Computational Physics Assistant
+                 <!-- - An Open Source GUI for Teaching and Implementing Computational
+                Physics -->
+              </h1>
+              <p class="mb-5">
+                Computational Physics Assistant (COMPASS) is an 
+                <b>Open Source GUI for Teaching and Implementing Computational Physics</b>.
+                Here you can study the dynamics of a number of physical
+                systems and predict their evolutionary behaviour using several
+                numerical techniques. You can also learn how to write C++
+                programs for solving these problems.                
+              </p>
+              <a href="#how-to-section" class="btn btn-primary btn-lg mb-0">Get Started</a>
+            </div>
 
-    <div class="row custom-bg2 py-5">
-      <div class="col-8 mx-auto"">
-        <div class="row">
-          <div class="col-7 p-4">
-            <h1 class="mb-4">
-              Open Source GUI for Teaching and Implementing Computational
-              Physics
-            </h1>
-            <p class="mb-5">
-              This is an
-              <b>Open Source GUI for Teaching and Implementing Computational Physics</b>.
-              Here you can study the dynamics of a number of physical
-              systems and predict their evolutionary behaviour using several
-              numerical techniques. You can also learn how to write C++
-              programs for solving these problems.
-            </p>
-            <a href="/gui" class="btn btn-primary btn-lg mb-0">Get Started</a>
-          </div>
-          <div class="col-5 p-4 text-center">
-            <p style="font-size: 180px" class="mb-0">🔬</p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="col-5 p-4 text-center">
+              <!-- <p style="font-size: 180px" class="mb-0"><img src="{% static 'compass.png' %}"></p> -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="row py-5">
-      <div class="col-6 p-4 mx-auto">
-        <h3 class="mb-5">How to use this app:</h3>
-        <div>
-          {% include "app-steps.html" with content="Go to <b>Let's Learn!</b>" %}
-          {% include "app-steps.html" with content="Select a <b>problem</b> to study." %}
-          {% include "app-steps.html" with content="To explore the physics behind the problem, click on the <b>View Program Documentation</b> button. Else..." %}
-          {% include "app-steps.html" with content="Select a <b>numerical method</b> to use." %}
-          {% include "app-steps.html" with content="To explore the mathematics of the numerical method, click on the <b>View Method Documentation</b> button. Else..." %}
-          {% include "app-steps.html" with content="Enter the <b>inputs</b>." %}
-          {% include "app-steps.html" with content="Click on <b>Run</b> to view the results." %}
-          {% include "app-steps.html" with content="To learn how to write C++ code for the problem, click on <b>View Program Code</b>. Click on the <b>Copy</b> button to copy the code." %}
-          {% include "app-steps.html" with content="To edit code online, Click on <b>Edit Online: OnlineGDB</b> button. To edit code offline, Click on <b>Edit Offline: CodeBlocks</b> button." %} 
-          {% include "app-steps.html" with content="Paste the code in the editor. Practice the exercises given within the incomplete code and test the results." %} 
-          {% include "app-steps.html" with content="<a href='/gui' class='btn btn-primary btn-sm'>Let's Learn</a>" is_last="true" %}
+      
+      <div id="how-to-section" class="steps-text row py-5 steps-bg">
+        <div class="col-6 p-4 mx-auto">
+          <br><br>
+          <h3 class="mb-5">How to use this app:</h3>
+          <div>
+            {% include "app-steps.html" with content="Go to <b>Let's Learn!</b>" %}
+            {% include "app-steps.html" with content="Select a <b>problem</b> to study." %}
+            {% include "app-steps.html" with content="To explore the physics behind the problem, click on the <b>View Program Documentation</b> button. Else..." %}
+            {% include "app-steps.html" with content="Select a <b>numerical method</b> to use." %}
+            {% include "app-steps.html" with content="To explore the mathematics of the numerical method, click on the <b>View Method Documentation</b> button. Else..." %}
+            {% include "app-steps.html" with content="Enter the <b>inputs</b>." %}
+            {% include "app-steps.html" with content="Click on <b>Run</b> to view the results." %}
+            {% include "app-steps.html" with content="To learn how to write C++ code for the problem, click on <b>View Program Code</b>. Click on the <b>Copy</b> button to copy the code." %}
+            {% include "app-steps.html" with content="To edit code online, Click on <b>Edit Online: OnlineGDB</b> button. To edit code offline, Click on <b>Edit Offline: CodeBlocks</b> button." %} 
+            {% include "app-steps.html" with content="Paste the code in the editor. Practice the exercises given within the incomplete code and test the results." %} 
+            {% include "app-steps.html" with content="<a href='/gui' class='btn btn-primary btn-sm'>Let's Learn</a>" is_last="true" %}
+          </div>
         </div>
       </div>
-    </div>
-    
+        
     {% include 'footer.html' %}
   </body>
 </html>

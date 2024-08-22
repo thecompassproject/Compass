@@ -18,7 +18,7 @@ private:
 
 public:
     falling_body();
-    //EXERCISE NO 2: declare a function named 'retard' that has 'float' return type and takes one parameter 'velo' having 'float' data type
+    //EXERCISE NO 2: declare a function named 'retard' that has 'float' return type and takes one parameter 'velo'
 
     void calc();
 };
@@ -111,8 +111,4 @@ int main()
 2. Observe the effect of removing one or more drag forces
 4. Play with limits of 'for' loop in the 'calc' function and observe the effects
 */
-
-
-
-
 ```
