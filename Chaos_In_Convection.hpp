@@ -105,14 +105,20 @@ public:
         }
 
         std::string s;
-        const char *ss = s.append("splot '").append(file_name).append("' using 1:2 with lines title 'Convection'\n").c_str();
+        const char *ss = s.append("plot '").append(file_name).append("' using 1:3 with lines title 'Convection in XZ Plane'\n").c_str();
+        // std::string sss;
+        // const char *ssss = sss.append("resplot '").append(file_name).append("' using 2:3 with lines title 'Convection YZ'\n").c_str();
+        // std::string sssss;
+        // const char *ssssss = sssss.append("resplot '").append(file_name).append("' using 1:3 with lines title 'Convection XZ'\n").c_str();
 
-        fprintf(gnuplotPipe, "set title 'Chaotic Motion'\n");
+        fprintf(gnuplotPipe, "set title 'Convection in Fluids'\n");
         fprintf(gnuplotPipe, "set xlabel 'X Position'\n");
-        fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
+        // fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
         fprintf(gnuplotPipe, "set zlabel 'Z Position'\n");
         // fprintf(gnuplotPipe, "splot 'chaos.dat' using 1:2:3 with lines title 'Trajectory'\n");
         fprintf(gnuplotPipe, ss);
+        // fprintf(gnuplotPipe, ssss);
+        // fprintf(gnuplotPipe, ssssss);
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);

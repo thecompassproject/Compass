@@ -103,8 +103,10 @@ public:
 
         std::string s;
         const char *ss = s.append("plot '").append(file_name).append("' using 1:2 with lines title 'Height'\n").c_str();
-        const char *sss = s.append("replot '").append(file_name).append("' using 1:3 with lines title 'Velocity'\n").c_str();
-        const char *ssss = s.append("replot '").append(file_name).append("' using 1:4 with lines title 'Velocity'\n").c_str();
+        std::string sss;
+        const char *ssss = sss.append("replot '").append(file_name).append("' using 1:3 with lines title 'Velocity'\n").c_str();
+        std::string sssss;
+        const char *ssssss = sssss.append("replot '").append(file_name).append("' using 1:4 with lines title 'Acceleration'\n").c_str();
 
         fprintf(gnuplotPipe, "set title 'Motion Of Spherical Body'\n");
         fprintf(gnuplotPipe, "set xlabel 'Time'\n");
@@ -114,8 +116,8 @@ public:
         // fprintf(gnuplotPipe, "replot 'drag1.dat' using 1:4 with lines title 'Acceleration'\n");
 
         fprintf(gnuplotPipe, ss);
-        fprintf(gnuplotPipe, sss);
         fprintf(gnuplotPipe, ssss);
+        fprintf(gnuplotPipe, ssssss);
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);

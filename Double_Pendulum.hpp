@@ -95,14 +95,15 @@ public:
 
         // Create plot command for gnuplot
         std::string s;
-        const char *ss = s.append("plot '").append(file_name).append("' using 1:2 with lines title 'Pendulum 2'\n").c_str();
-        const char *sss = s.append("replot '").append(file_name).append("' using 3:4 with lines title 'Pendulum 2'\n").c_str();
+        const char *ss = s.append("plot '").append(file_name).append("' using 1:2 with lines title 'Pendulum 1'\n").c_str();
+        std::string sss;
+        const char *ssss = sss.append("replot '").append(file_name).append("' using 3:4 with lines title 'Pendulum 2'\n").c_str();
 
         fprintf(gnuplotPipe, "set title 'Double Pendulum Phase Trajectory'\n");
         fprintf(gnuplotPipe, "set xlabel 'Angular Displacement'\n");
         fprintf(gnuplotPipe, "set ylabel 'Angular Velocity'\n");
         fprintf(gnuplotPipe, ss);
-        fprintf(gnuplotPipe, sss);
+        fprintf(gnuplotPipe, ssss);
         // fprintf(gnuplotPipe, "plot 'tra.dat' using 1:2 with lines title 'Mass^1'\n");
         // fprintf(gnuplotPipe, "replot 'tra.dat' using 3:4 with lines title 'Mass^2'\n");
 

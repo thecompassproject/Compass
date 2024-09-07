@@ -152,7 +152,7 @@ public:
             }
 
             std::string s;
-            const char *ss = s.append("splot '").append(file_name).append("' using 1:2 with lines title 'EM Fields'\n").c_str();
+            const char *ss = s.append("splot '").append(file_name).append("' using 1:2:3 with lines title 'EM Fields'\n").c_str();
 
             fprintf(gnuplotPipe, "set title 'Charged Particle Trajectory'\n");
             fprintf(gnuplotPipe, "set xlabel 'X Position'\n");
