@@ -127,6 +127,7 @@ public:
         std::string s;
         const char *ss = s.append("plot '").append(file_name).append("' using 1:2 with lines title 'Trajectory'\n").c_str();
 
+        fprintf(gnuplotPipe, "set term wxt\n");
         fprintf(gnuplotPipe, "set title 'Projectile Trajectory'\n");
         fprintf(gnuplotPipe, "set xlabel 'X Position (m)'\n");
         fprintf(gnuplotPipe, "set ylabel 'Y Position (m)'\n");

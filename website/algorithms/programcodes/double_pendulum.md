@@ -31,7 +31,7 @@ void double_pendulum::input() {
 	cin >> length1 >> length2;
 
 	cout << "Enter the angles angle1 and angle2::\n";
-	//EXERCISE NO 4: use the 'cin' command to ask user to input values that gets assigned to the varaibles 'angle1' and 'angle2'
+	//EXERCISE NO 4: use the 'cin' command to ask user to input values that gets assigned to the variables 'angle1' and 'angle2'
 
 
 	angle1 = angle1 * (M_PI / 180);  // convert the angles from degrees to radians
