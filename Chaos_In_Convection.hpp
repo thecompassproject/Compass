@@ -33,7 +33,23 @@ public:
     void sap()
     {
         double h = 0.01;
-        std::ofstream out("chaos.dat");
+        char *file_name = "convection.dat"; // give a default name to the file
+        if (_method_choice == 1.0)
+        {
+            file_name = "convection_rk4.dat";
+        }
+        else if (_method_choice == 2.0)
+        {
+            file_name = "convection_euler.dat";
+        }
+
+        else if (_method_choice == 3.0)
+        {
+            file_name = "convection_rals.dat";
+        }
+
+        std::ofstream out(file_name);
+
         for (double i = 0; i < 10000; i++)
         {
 
@@ -88,11 +104,21 @@ public:
             return;
         }
 
-        fprintf(gnuplotPipe, "set title 'Chaotic Motion'\n");
+        std::string s;
+        const char *ss = s.append("plot '").append(file_name).append("' using 1:3 with lines title 'Convection in XZ Plane'\n").c_str();
+        // std::string sss;
+        // const char *ssss = sss.append("resplot '").append(file_name).append("' using 2:3 with lines title 'Convection YZ'\n").c_str();
+        // std::string sssss;
+        // const char *ssssss = sssss.append("resplot '").append(file_name).append("' using 1:3 with lines title 'Convection XZ'\n").c_str();
+
+        fprintf(gnuplotPipe, "set title 'Convection in Fluids'\n");
         fprintf(gnuplotPipe, "set xlabel 'X Position'\n");
-        fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
+        // fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
         fprintf(gnuplotPipe, "set zlabel 'Z Position'\n");
-        fprintf(gnuplotPipe, "splot 'chaos.dat' using 1:2:3 with lines title 'Trajectory'\n");
+        // fprintf(gnuplotPipe, "splot 'chaos.dat' using 1:2:3 with lines title 'Trajectory'\n");
+        fprintf(gnuplotPipe, ss);
+        // fprintf(gnuplotPipe, ssss);
+        // fprintf(gnuplotPipe, ssssss);
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);

@@ -4,30 +4,72 @@
   {% load static %}
   {% load bootstrap5 %}
   {% bootstrap_css %}
-  {% bootstrap_javascript %} 
-
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <style>
+
+  .hover {
+    color: #b1101000;
+    background: 
+      linear-gradient(90deg,#f500e9 50%,#000 0) 
+      var(--_p,100%)/200% no-repeat;
+    -webkit-background-clip: text;
+            background-clip: text;
+    transition: 0.5s;
+  }
+  .hover:hover {
+    --_p: 0%;
+  }
+
+  .parallax {
+    /* The image used */
+    background-image: url("{% static 'bg7.jpg' %}");
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: unset;
+  }
+
+    .nav-bar{
+      /* list-style-type: circle; */
+      margin: 100;
+      padding: 100;
+      overflow: hidden;
+      position: fixed;
+      top: 100;
+      width: 100%;
+    }
+    
+    .footer{
+      /* margin: 100; */
+      /* padding: 100; */
+      /* overflow: hidden; */
+      position: fixed;
+      bottom: 0%;
+      width: 100%;
+    }
+
     .align-image{ 
       align-items: center;
       justify-content: center;
     }
+
     .link-default{
-      color: #c1c6fc;
+      color: #ffffff;
+      /* color: #000000; */
     }
     .link-active{
-      color: #ff00e0;
+      color: #f500e9;
     }
     .btn-primary {
       background-color: rgba(9, 9, 121, 1);
     }
-    .custom-bg2 {
-        background-image: url("{% static 'bg3.jpg' %}");
-    }
-    
-    .w-65{
-        width: 65%;
-    }
-    
+
     a{
       color:#c1c6fc;
       text-decoration: none;
@@ -35,11 +77,12 @@
         color: #ff9cf3;
       }
     }
+
     .copy-button {
       position: absolute;
-      top: 8px;
-      right: 8px;
-    }
+      top: 16px;
+      right: 16px;
+    } 
 
     .nav {
       width: 128px;
@@ -48,9 +91,10 @@
       display: block;
       padding: 0px;
       line-height: 32px;
+      position: fixed;
     }
+
     .custom-bg1 {
-      background: rgb(9, 9, 121);
       background: linear-gradient(
         90deg,
         rgba(9, 9, 121, 1) 0%,
@@ -58,19 +102,55 @@
         rgba(255, 185, 247, 1) 100%
       );
     }
-    .custom-bg2 {
-      background-image: url("{% static 'bg3.jpg' %}");
+
+    .intro-bg {
+      background-image: url("{% static 'bg7.jpg' %}");
       background-repeat: no-repeat;
       background-size: cover;
     }
-    .bg-custom1 {
-      background: #c1c6fc;
-      color: #000866;
+
+    .steps-bg {
+      background-image: url("{% static 'bg15.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
-    .bg-custom2 {
-      background: #000866;
-      color: #c1c6fc;
+
+    .form-bg {
+      background-image: url("{% static 'bg15.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
+    
+    .code-bg {
+      background-image: url("{% static 'bg7.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .footer-bg {
+      background: linear-gradient(
+        90deg,
+        rgba(9, 9, 121, 1) 0%,
+        #ff00e0 75%,
+        rgba(255, 185, 247, 1) 100%
+      );
+    }
+    
+  .intro-text{
+    color: whitesmoke;
+    /* color: black; */
+  }
+
+  .steps-text{
+    /* color: whitesmoke; */
+    color: black;
+  }
+
+  .form-text{
+    /* color: whitesmoke; */
+    color: black;
+  }
+
     .d-none {
       display: none;
     }
@@ -78,6 +158,7 @@
       font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
     }
+
     .list-circle {
       width: 24px;
       height: 24px;

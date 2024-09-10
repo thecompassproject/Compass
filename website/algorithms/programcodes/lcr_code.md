@@ -69,7 +69,7 @@ void LCR::condition() {
 		cout << "\nThe oscillations are over-damped.";   // for over-damped
 	}
 
-	//EXERCISE NO 6: write the condition for the under-damped case using 'else if' keyword and using '<' sign. Wrap the 'cout' command written below in this condition usign {}
+	//EXERCISE NO 6: write the condition for the under-damped case using 'else if' keyword and using '<' sign. Wrap the 'cout' command written below in this condition using {}
 
 		cout << "\nThe oscillations are under-damped.";  // for under-damped
 

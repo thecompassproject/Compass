@@ -1,0 +1,15 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "launch my djnago web app as desktop app using electron framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "website": "electron ."
+  },
+  "author": "iapt",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^32.0.1"
+  }
+}

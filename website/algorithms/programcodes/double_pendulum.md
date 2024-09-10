@@ -96,5 +96,4 @@ int main() {
 3. Observe the effect of not converting the angles into radians
 4. Play with limits of 'for' loop in the 'calc' function and observe the effects
 */
-
 ```

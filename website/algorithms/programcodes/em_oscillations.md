@@ -97,5 +97,4 @@ int main() {
 2. Observe what is the effect of changing the value of 'n' and 'n'
 3. Play with limits of 'for' loop in the 'calc' function and observe the effects
 */
-
 ```
