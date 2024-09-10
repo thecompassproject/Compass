@@ -37,7 +37,24 @@ public:
 
     void solve()
     {
-        std::ofstream out("charge.dat");
+
+        char *file_name = "emfields.dat"; // give a default name to the file
+        if (_method_choice == 1.0)
+        {
+            file_name = "emfields_rk4.dat";
+        }
+        else if (_method_choice == 2.0)
+        {
+            file_name = "emfields_euler.dat";
+        }
+
+        else if (_method_choice == 3.0)
+        {
+            file_name = "emfields_rals.dat";
+        }
+
+        std::ofstream out(file_name);
+
         double n = 3000;
         _h = 0.0015;
         double x = 0;
@@ -134,11 +151,15 @@ public:
                 return;
             }
 
+            std::string s;
+            const char *ss = s.append("splot '").append(file_name).append("' using 1:2:3 with lines title 'EM Fields'\n").c_str();
+
             fprintf(gnuplotPipe, "set title 'Charged Particle Trajectory'\n");
             fprintf(gnuplotPipe, "set xlabel 'X Position'\n");
             fprintf(gnuplotPipe, "set ylabel 'Y Position'\n");
             fprintf(gnuplotPipe, "set zlabel 'Z Position'\n");
-            fprintf(gnuplotPipe, "splot 'charge.dat' using 1:2:3 with lines title 'Trajectory'\n");
+            // fprintf(gnuplotPipe, "splot 'charge.dat' using 1:2:3 with lines title 'Trajectory'\n");
+            fprintf(gnuplotPipe, ss);
 
 #ifdef _WIN32
             _pclose(gnuplotPipe);

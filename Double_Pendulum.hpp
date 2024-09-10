@@ -28,11 +28,28 @@ public:
         double meg11 = 0;
         double meg22 = 0;
         double h = 0.0005;
-        std::ofstream outfl("tra.dat");
-        for (double i = 0; i < 20000; i++)
+
+        char *file_name = "pendulum.dat"; // give a default name to the file
+        if (_method_choice == 1.0)
+        {
+            file_name = "pendulum_rk4.dat";
+        }
+        else if (_method_choice == 2.0)
+        {
+            file_name = "pendulum_euler.dat";
+        }
+
+        else if (_method_choice == 3.0)
+        {
+            file_name = "pendulum_rals.dat";
+        }
+
+        std::ofstream out(file_name);
+
+        for (double i = 0; i < 50000; i++)
         {
 
-            outfl << _o11 << "  " << meg11 << "  " << _o22 << "  " << meg22 << "\n";
+            out << _o11 << "  " << meg11 << "  " << _o22 << "  " << meg22 << "\n";
             if (_method_choice == 1.0)
             {
                 calc1(std::bind(&double_pendulum::ac1, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
@@ -60,7 +77,7 @@ public:
                 break;
             }
         }
-        outfl.close();
+        out.close();
 
         // Important if building for both Unix and Windows OS
         // Plot the data using gnuplot
@@ -75,11 +92,20 @@ public:
             std::cerr << "Error opening pipe to gnuplot" << std::endl;
             return;
         }
+
+        // Create plot command for gnuplot
+        std::string s;
+        const char *ss = s.append("plot '").append(file_name).append("' using 1:2 with lines title 'Pendulum 1'\n").c_str();
+        std::string sss;
+        const char *ssss = sss.append("replot '").append(file_name).append("' using 3:4 with lines title 'Pendulum 2'\n").c_str();
+
         fprintf(gnuplotPipe, "set title 'Double Pendulum Phase Trajectory'\n");
         fprintf(gnuplotPipe, "set xlabel 'Angular Displacement'\n");
         fprintf(gnuplotPipe, "set ylabel 'Angular Velocity'\n");
-        fprintf(gnuplotPipe, "plot 'tra.dat' using 1:2 with lines title 'Mass^1'\n");
-        fprintf(gnuplotPipe, "replot 'tra.dat' using 3:4 with lines title 'Mass^2'\n");
+        fprintf(gnuplotPipe, ss);
+        fprintf(gnuplotPipe, ssss);
+        // fprintf(gnuplotPipe, "plot 'tra.dat' using 1:2 with lines title 'Mass^1'\n");
+        // fprintf(gnuplotPipe, "replot 'tra.dat' using 3:4 with lines title 'Mass^2'\n");
 
 #ifdef _WIN32
         _pclose(gnuplotPipe);

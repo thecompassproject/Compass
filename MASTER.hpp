@@ -81,6 +81,7 @@ public:
       chaos A;
       A.input(x, y, z, method_choice);
       A.sap();
+      return "";
     }
     else if (prog_choice == 7.0)
     {
