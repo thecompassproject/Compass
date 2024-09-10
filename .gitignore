@@ -3,6 +3,8 @@ build
 ThirdPartyLib
 __pycache__
 *.dat
+dist
+*.spec
 node_modules
 dist
-
+*.log

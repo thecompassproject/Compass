@@ -1,0 +1,2 @@
+pyinstaller --name=start website\start.py --copy-metadata django-bootstrap-v5 --noconfirm --add-data=website\algorithms\templates:algorithms\templates
+xcopy website\algorithms\programcodes dist\start\algorithms\programcodes /e /i /h
