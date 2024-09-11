@@ -1,0 +1,39 @@
+name: Create EXE
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions: write-all
+
+    steps:
+      - name: Set up Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - uses: ilammy/msvc-dev-cmd@v1.4.1
+
+      - name: Setup the App
+        run: |
+          setup.bat
+
+      - name: Build Exe
+        run: |
+          build-exe.bat
+
+      - name: Update recent release
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "dist/compass/compass.exe"
+          tags: true

@@ -6,5 +6,3 @@ python -m venv venv
 venv/bin/activate.bat
 pip install -r requirements.txt
 build_script.bat
-cd website
-python manage.py runserver
