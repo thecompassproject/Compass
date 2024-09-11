@@ -36,7 +36,7 @@ public:
                double m1, double m2, double l1, double l2, double o11, double o22, double g,
                double p, double mu, double x, double v,
                double q, double vx, double vy, double vz, double Ex, double Ey, double Ez, double Bx, double By, double Bz,
-               double y, double z,
+               double sigma, double rho, double beta, double y, double z, double h,
                double time_period, double a, double loop_count,
                double b)
   {
@@ -79,7 +79,7 @@ public:
     else if (prog_choice == 6.0)
     {
       chaos A;
-      A.input(x, y, z, method_choice);
+      A.input(x, y, z, sigma, rho, beta, n, h, method_choice);
       A.sap();
       return "";
     }

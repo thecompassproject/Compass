@@ -20,7 +20,7 @@
       3: "code-double_pendulum",
       4: "code-drag",
       5: "code-em_oscillations",
-      6: "code-em_oscillations"
+      6: "code-convection"
     };
 
     const programdocsDisplay = {
@@ -29,7 +29,7 @@
       3: "Documentation__Double_Pendulum",
       4: "Documentation__Falling_Spherical_body",
       5: "Documentation__Charged_Particle_in_EM_Field",
-      5: "Documentation__Charged_Particle_in_EM_Field",
+      6: "Documentation__Convection",
     };
 
     const methodDocsDisplay = {
@@ -41,8 +41,9 @@
   function viewProgramCode() {
 
     const program = document.getElementById("prog").value;
-    
+  
     Object.values(codeDisplay).forEach((id) => {
+      console.log(id);
       document.getElementById(id).classList.add("d-none");
     });
 
@@ -172,7 +173,7 @@
         3: false,
         4: false,
         5: false,
-        6: false,
+        6: true,
       },
       "m1": {
         1: false,
@@ -334,6 +335,30 @@
         5: true,
         6: false,
       },
+      "sigma": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: true,
+      },
+      "rho": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: true,
+      },
+      "beta": {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: true,
+      },
       "y": {
         1: false,
         2: false,
@@ -343,6 +368,14 @@
         6: true,
       },
       "z": {
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false,
+      6: true,
+      },
+      "h": {
       1: false,
       2: false,
       3: false,
@@ -450,9 +483,17 @@
       xHeading.innerText = "Initial height (m)";
     }
     else if (program == 6) {
-      xHeading.innerText = "x-parameter";
+      xHeading.innerText = "Enter the initial value of convective flow";
     }
   
+    const nHeading = document.getElementById("n-field-heading");
+    if (program == 2) {
+      nHeading.innerText = "Number of loops";
+    }
+    else if (program == 6) {
+      nHeading.innerText = "Enter the number of steps";
+    }
+
   }
 
   
@@ -483,6 +524,7 @@
     const program=document.getElementById("prog").value;
     displayCondition(program);
     Object.values(codeDisplay).forEach((id) => {
+      console.log(id);
       document.getElementById(id).classList.add("d-none");
     });
     

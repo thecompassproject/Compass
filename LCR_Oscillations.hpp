@@ -124,6 +124,8 @@ public:
 
         if (pow(_R, 2) > (4 * _L) / _C)
         {
+
+            fprintf(gnuplotPipe, "set term wxt\n");
             fprintf(gnuplotPipe, "set title 'Over Damped'\n");
             fprintf(gnuplotPipe, "set xlabel 'Time'\n");
             fprintf(gnuplotPipe, "set ylabel 'Current'\n");
@@ -131,6 +133,7 @@ public:
         }
         else if (pow(_R, 2) < (4 * _L) / _C)
         {
+            fprintf(gnuplotPipe, "set term wxt\n");
             fprintf(gnuplotPipe, "set title 'Under Damped'\n");
             fprintf(gnuplotPipe, "set xlabel 'Time'\n");
             fprintf(gnuplotPipe, "set ylabel 'Current'\n");
@@ -138,6 +141,7 @@ public:
         }
         else
         {
+            fprintf(gnuplotPipe, "set term wxt\n");
             fprintf(gnuplotPipe, "set title 'Critically Damped'\n");
             fprintf(gnuplotPipe, "set xlabel 'Time'\n");
             fprintf(gnuplotPipe, "set ylabel 'Current'\n");

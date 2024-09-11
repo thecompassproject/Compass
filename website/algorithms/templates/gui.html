@@ -70,7 +70,7 @@
                       <p id="mass-field-heading" class="h5">Mass of the projectile (kg) </p>  
                       <div class="row">
                         <div class="col-6">
-                          <input name="m" value="{{ m }}" class="form-control mb-3" type="number" placeholder="type mass">
+                          <input name="m" value="{{ m }}" class="form-control mb-3" type="number" step="any" placeholder="type mass">
                         </div>
                       </div>
                     </div>
@@ -79,7 +79,7 @@
                       <p id="radius-field-heading" class="h5">Radius of the projectile (m) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="r" value="{{ r }}" class="form-control mb-3" type="number" placeholder="type radius">
+                          <input name="r" value="{{ r }}" class="form-control mb-3" type="number" step="any" placeholder="type radius">
                         </div>
                       </div>
                     </div>
@@ -88,7 +88,7 @@
                       <p class="h5">Release angle of the projectile (degrees) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="th" value="{{ th }}" class="form-control mb-3" type="number" placeholder="type angle">
+                          <input name="th" value="{{ th }}" class="form-control mb-3" type="number" step="any" placeholder="type angle">
                         </div>
                       </div>
                     </div>
@@ -97,7 +97,7 @@
                       <p id="ini_vel-field-heading" class="h5">Initial velocity of the projectile (m/s)</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="v0" value="{{ V0 }}" class="form-control mb-3" type="number" placeholder="type velocity">
+                          <input name="v0" value="{{ V0 }}" class="form-control mb-3" type="number" step="any" placeholder="type velocity">
                         </div>
                       </div>
                     </div>
@@ -106,7 +106,7 @@
                       <p class="h5">Drag coefficient of the medium</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="c" value="{{ c }}" class="form-control mb-3" type="number" placeholder="type drag coefficient">
+                          <input name="c" value="{{ c }}" class="form-control mb-3" type="number" step="any" placeholder="type drag coefficient">
                         </div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@
                       <p class="h5">Inductance (mH) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="L" value="{{ L }}" class="form-control mb-3" type="number" placeholder="type inductance">
+                          <input name="L" value="{{ L }}" class="form-control mb-3" type="number" step="any" placeholder="type inductance">
                         </div>
                       </div>
                     </div>
@@ -124,7 +124,7 @@
                       <p class="h5">Capacitance (μF)</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="C" value="{{ C }}" class="form-control mb-3" type="number" placeholder="type capacitance">
+                          <input name="C" value="{{ C }}" class="form-control mb-3" type="number" step="any" placeholder="type capacitance">
                         </div>
                       </div>
                     </div>
@@ -133,7 +133,7 @@
                       <p class="h5">Resistance (ohms)</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="R" value="{{ R }}" class="form-control mb-3" type="number" placeholder="type resistance">
+                          <input name="R" value="{{ R }}" class="form-control mb-3" type="number" step="any" placeholder="type resistance">
                         </div>
                       </div>
                     </div>
@@ -142,7 +142,7 @@
                       <p class="h5">Initial current (mA) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="i0" value="{{ I }}" class="form-control mb-3" type="number" placeholder="type initial current">
+                          <input name="i0" value="{{ I }}" class="form-control mb-3" type="number" step="any" placeholder="type initial current">
                         </div>
                       </div>
                     </div>
@@ -151,7 +151,7 @@
                       <p class="h5">Initial charge (mC)</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="q0" value="{{ Q }}" class="form-control mb-3" type="number" placeholder="type initial charge">
+                          <input name="q0" value="{{ Q }}" class="form-control mb-3" type="number" step="any" placeholder="type initial charge">
                         </div>
                       </div>
                     </div>
@@ -160,16 +160,16 @@
                       <p class="h5">Final time (sec) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="finalTime" value="{{ finalTime }}" class="form-control mb-3" type="number" placeholder="type final time">
+                          <input name="finalTime" value="{{ finalTime }}" class="form-control mb-3" type="number" step="any" placeholder="type final time">
                         </div>
                       </div>
                     </div>
                 
                     <div id="n" class="d-none">
-                      <p class="h5">Number of loops </p>
+                      <p id="n-field-heading" class="h5">Number of loops </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="n" value="{{ n }}" class="form-control mb-3" type="number" placeholder="type number of loops you want to run">
+                          <input name="n" value="{{ n }}" class="form-control mb-3" type="number" step="any" placeholder="type number of loops you want to run">
                         </div>
                       </div>
                     </div>
@@ -178,7 +178,7 @@
                       <p class="h5">Mass of first pendulum (kg) </p>
                       <div class="row">
                         <div class="col-6">    
-                          <input name="m1" value="{{ m1 }}" class="form-control mb-3" type="number" placeholder="type mass of first pendulum">
+                          <input name="m1" value="{{ m1 }}" class="form-control mb-3" type="number" step="any" placeholder="type mass of first pendulum">
                         </div>
                       </div>
                     </div>
@@ -187,7 +187,7 @@
                       <p class="h5">Mass of second pendulum (kg) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="m2" value="{{ m2 }}" class="form-control mb-3" type="number" placeholder="type mass of second pendulum">
+                          <input name="m2" value="{{ m2 }}" class="form-control mb-3" type="number" step="any" placeholder="type mass of second pendulum">
                         </div>
                       </div>
                     </div>
@@ -196,7 +196,7 @@
                       <p class="h5">Length of first pendulum (m) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="l1" value="{{ l1 }}" class="form-control mb-3" type="number" placeholder="type length of first pendulum">
+                          <input name="l1" value="{{ l1 }}" class="form-control mb-3" type="number" step="any" placeholder="type length of first pendulum">
                         </div>
                       </div>
                     </div>
@@ -205,7 +205,7 @@
                       <p class="h5">Length of second pendulum (m) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="l2" value="{{ l2 }}" class="form-control mb-3" type="number" placeholder="type length of second pendulum">
+                          <input name="l2" value="{{ l2 }}" class="form-control mb-3" type="number" step="any" placeholder="type length of second pendulum">
                         </div>
                       </div>
                     </div>
@@ -214,7 +214,7 @@
                       <p class="h5">Release angle of first pendulum (degrees) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="o11" value="{{ o11 }}" class="form-control mb-3" type="number" placeholder="type release angle of first pendulum">
+                          <input name="o11" value="{{ o11 }}" class="form-control mb-3" type="number" step="any" placeholder="type release angle of first pendulum">
                         </div>
                       </div>
                     </div>
@@ -223,7 +223,7 @@
                       <p class="h5">Release angle of second pendulum (degrees) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="o22" value="{{ o22 }}" class="form-control mb-3" type="number" placeholder="type release angle of second pendulum">
+                          <input name="o22" value="{{ o22 }}" class="form-control mb-3" type="number" step="any" placeholder="type release angle of second pendulum">
                         </div>
                       </div>
                     </div>
@@ -232,7 +232,7 @@
                       <p class="h5">Acceleration due to gravity (m/sec²)</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="g" value="{{ g }}" class="form-control mb-3" type="number" placeholder="type value of acceleration due to gravity">
+                          <input name="g" value="{{ g }}" class="form-control mb-3" type="number" step="any" placeholder="type value of acceleration due to gravity">
                         </div>
                       </div>
                     </div>
@@ -241,7 +241,7 @@
                       <p class="h5">Medium density (kg/m³) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="p" value="{{ p }}"  class="form-control mb-3" type="number" placeholder="type medium density">
+                          <input name="p" value="{{ p }}"  class="form-control mb-3" type="number" step="any" placeholder="type medium density">
                         </div>
                       </div>
                     </div>
@@ -250,17 +250,16 @@
                       <p class="h5">Viscosity coefficient of the medium (N-s/m²)</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="mu" value="{{ mu }}" class="form-control mb-3" type="number" placeholder="type viscosity coefficient">
+                          <input name="mu" value="{{ mu }}" class="form-control mb-3" type="number" step="any" placeholder="type viscosity coefficient">
                         </div>
                       </div>
                     </div>
                     
-
                     <div id="x" class="d-none">
                       <p id="x-field-heading" class="h5">Initial height (m) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="x" value="{{ x }}" class="form-control mb-3" type="number" placeholder="type initial height">
+                          <input name="x" value="{{ x }}" class="form-control mb-3" type="number" step="any" placeholder="type initial height">
                         </div>
                       </div>
                     </div>
@@ -269,7 +268,7 @@
                       <p class="h5">Charge on the particle (C) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="q" value="{{ q }}" class="form-control mb-3" type="number">
+                          <input name="q" value="{{ q }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -278,7 +277,7 @@
                       <p class="h5">Magnitude of x-component of velocity of the particle (m/sec) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="vx" value="{{ vx }}"  class="form-control mb-3" type="number">
+                          <input name="vx" value="{{ vx }}"  class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -287,7 +286,7 @@
                       <p class="h5">Magnitude of y-component of velocity of the particle (m/sec) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="vy" value="{{ vy }}"  class="form-control mb-3" type="number">
+                          <input name="vy" value="{{ vy }}"  class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -296,7 +295,7 @@
                       <p class="h5">Magnitude of z-component of velocity of the particle (m/sec) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="vz" value="{{ vz }}"  class="form-control mb-3" type="number">
+                          <input name="vz" value="{{ vz }}"  class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -305,7 +304,7 @@
                       <p class ="h5">Magnitude of x-component of Electric Field (N/C) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="Ex" value="{{ Ex }}"  class="form-control mb-3" type="number">
+                          <input name="Ex" value="{{ Ex }}"  class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -314,7 +313,7 @@
                       <p class="h5">Magnitude of y-component of Electric Field (N/C) </p>
                       <div class="row">
                         <div class="col-6">           
-                          <input name="Ey" value="{{ Ey }}"  class="form-control mb-3" type="number">
+                          <input name="Ey" value="{{ Ey }}"  class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -323,7 +322,7 @@
                       <p class="h5">Magnitude of z-component of Electric Field (N/C) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="Ez" value="{{ Ez }}" class="form-control mb-3" type="number">
+                          <input name="Ez" value="{{ Ez }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -332,7 +331,7 @@
                       <p class="h5">Magnitude of x-component of Magnetic Field (T) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="Bx" value="{{ Bx }}" class="form-control mb-3" type="number">
+                          <input name="Bx" value="{{ Bx }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -341,7 +340,7 @@
                       <p class="h5">Magnitude of y-component of Magnetic Field (T) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="By" value="{{ By }}" class="form-control mb-3" type="number">
+                          <input name="By" value="{{ By }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
@@ -350,25 +349,61 @@
                       <p class="h5">Magnitude of z-component of Magnetic Field (T) </p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="Bz" value="{{ Bz }}" class="form-control mb-3" type="number">
+                          <input name="Bz" value="{{ Bz }}" class="form-control mb-3" type="number" step="any">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="sigma" class="d-none">
+                      <p class="h5">Enter the Prandtl number (ratio of viscosity to thermal diffusivity)</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <input name="sigma" value="{{ sigma }}" class="form-control mb-3" type="number" step="any">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="rho" class="d-none">
+                      <p class="h5">Enter the Rayleigh Number</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <input name="rho" value="{{ rho }}" class="form-control mb-3" type="number" step="any">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="beta" class="d-none">
+                      <p class="h5">Enter the ratio of physical dimensions of layer</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <input name="beta" value="{{ beta }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
 
                     <div id="y" class="d-none">
-                      <p class="h5">y-parameter</p>
+                      <p class="h5">Enter the initial variation in horizontal temperature value</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="y" value="{{ y }}" class="form-control mb-3" type="number">
+                          <input name="y" value="{{ y }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
 
                     <div id="z" class="d-none">
-                      <p class="h5">z-parameter</p>
+                      <p class="h5">Enter the initial variation in vertical temperature value</p>
                       <div class="row">
                         <div class="col-6">
-                          <input name="z" value="{{ z }}" class="form-control mb-3" type="number">
+                          <input name="z" value="{{ z }}" class="form-control mb-3" type="number" step="any">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="h" class="d-none">
+                      <p class="h5">Enter the step size for computation</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <input name="h" value="{{ h }}" class="form-control mb-3" type="number" step="any">
                         </div>
                       </div>
                     </div>
