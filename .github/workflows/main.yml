@@ -24,11 +24,11 @@ jobs:
 
       - name: Setup the App
         run: |
-          setup.bat
+          .\setup.bat
 
       - name: Build Exe
         run: |
-          build-exe.bat
+          .\build-exe.bat
 
       - name: Update recent release
         uses: xresloader/upload-to-github-release@v1
