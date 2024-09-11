@@ -99,6 +99,7 @@ public:
         std::string sss;
         const char *ssss = sss.append("replot '").append(file_name).append("' using 3:4 with lines title 'Pendulum 2'\n").c_str();
 
+        fprintf(gnuplotPipe, "set term wxt\n");
         fprintf(gnuplotPipe, "set title 'Double Pendulum Phase Trajectory'\n");
         fprintf(gnuplotPipe, "set xlabel 'Angular Displacement'\n");
         fprintf(gnuplotPipe, "set ylabel 'Angular Velocity'\n");

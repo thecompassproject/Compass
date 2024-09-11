@@ -108,6 +108,7 @@ public:
         std::string sssss;
         const char *ssssss = sssss.append("replot '").append(file_name).append("' using 1:4 with lines title 'Acceleration'\n").c_str();
 
+        fprintf(gnuplotPipe, "set term wxt\n");
         fprintf(gnuplotPipe, "set title 'Motion Of Spherical Body'\n");
         fprintf(gnuplotPipe, "set xlabel 'Time'\n");
         fprintf(gnuplotPipe, "set ylabel 'Height/Velocity/Acceleration'\n");

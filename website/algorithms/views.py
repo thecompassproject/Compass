@@ -235,6 +235,24 @@ def algorithms(request):
     else:
         Bz = 0
 
+    sigma = request.GET.get('sigma')
+    if sigma is not None and len(sigma) > 0:
+        sigma = float(sigma)
+    else:
+        sigma = 0
+
+    rho = request.GET.get('rho')
+    if rho is not None and len(rho) > 0:
+        rho = float(rho)
+    else:
+        rho = 0
+
+    beta = request.GET.get('beta')
+    if beta is not None and len(beta) > 0:
+        beta = float(beta)
+    else:
+        beta = 0
+
     y = request.GET.get('y')
     if y is not None and len(y) > 0:
         y = float(y)
@@ -246,6 +264,12 @@ def algorithms(request):
         z = float(z)
     else:
         z = 0
+
+    h = request.GET.get('h')
+    if h is not None and len(h) > 0:
+        h = float(h)
+    else:
+        h = 0
 
     time_period = request.GET.get('time_period')
     if time_period is not None and len(time_period) > 0:
@@ -277,7 +301,7 @@ def algorithms(request):
                               m1, m2, l1, l2, o11, o22, g,
                               p, mu, x, v0,
                               q, vx, vy, vz, Ex, Ey, Ez, Bx, By, Bz,
-                              y, z,
+                              y, z, sigma, rho, beta, h,
                               time_period, a, loop_count,
                               b)
 
@@ -321,11 +345,15 @@ def algorithms(request):
         'Bz': Bz,
         'y': y,
         'z': z,
+        'sigma': sigma,
+        'rho': rho,
+        'beta': beta,
+        'h': h,
         'time_period': time_period,
         'a': a,
         'loop_count': loop_count,
         'b': b,
-        'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations'],
+        'codeFilesList': ['projectile_code', 'lcr_code', 'double_pendulum', 'drag', 'em_oscillations', 'convection'],
     }
 
     template = loader.get_template('gui.html')
