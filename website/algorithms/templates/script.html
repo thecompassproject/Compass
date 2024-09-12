@@ -9,7 +9,7 @@
   }
 
   function copyCode(fileName) {
-    const codeContent = document.querySelector(`#code-${fileName} > code`).innerText;
+    const codeContent = document.querySelector(`#code-${fileName} code`).innerText;
     writeTextToClipboard(codeContent);
     alert("Code copied to clipboard");
   }
@@ -39,11 +39,9 @@
     };
 
   function viewProgramCode() {
-
     const program = document.getElementById("prog").value;
-  
+
     Object.values(codeDisplay).forEach((id) => {
-      console.log(id);
       document.getElementById(id).classList.add("d-none");
     });
 
@@ -520,11 +518,9 @@
   })
 
   function perform(){
-    console.log("Hello");
     const program=document.getElementById("prog").value;
     displayCondition(program);
     Object.values(codeDisplay).forEach((id) => {
-      console.log(id);
       document.getElementById(id).classList.add("d-none");
     });
     

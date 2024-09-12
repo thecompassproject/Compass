@@ -427,20 +427,20 @@
       </div>
 
       {% for file_name in codeFilesList %} 
-      <div id="code-{{ file_name }}" class="row code-bg d-none">
-        <div class="col-8 mx-auto py-5">
+        <div id="code-{{ file_name }}" class="row code-bg d-none">
+          <div class="col-8 mx-auto py-5">
 
-          <div class="codehilite position-relative p-3 rounded mb-5">
-            <a id="onlinegdb-link" href="https://www.onlinegdb.com/" target="_blank" class="btn btn-light px-3 float-justify">Edit Online: OnlineGDB</a>
-            <a id="codeblocks-link" href="/codeblocks/" target="_blank" class="btn btn-light px-3 float-justify">Edit Offline: CodeBlocks</a>
-            <br>
-            <br>
-            <code>{{ file_name | add:".md" | markdown | safe }}</code>
-            <button id="code-copy-button" type="button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
+            <div class="codehilite position-relative p-3 rounded mb-5">
+              <a id="onlinegdb-link" href="https://www.onlinegdb.com/" target="_blank" class="btn btn-light px-3 float-justify">Edit Online: OnlineGDB</a>
+              <a id="codeblocks-link" href="/codeblocks/" target="_blank" class="btn btn-light px-3 float-justify">Edit Offline: CodeBlocks</a>
+              <br>
+              <br>
+              <code>{{ file_name | add:".md" | markdown | safe }}</code>
+              <button id="code-copy-button" type="button" class="copy-button btn btn-light" onclick="copyCode('{{ file_name }}')">📋</button>
+            </div>
+        
           </div>
-      
         </div>
-      </div>
       {% endfor %}
 
     </div>  

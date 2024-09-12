@@ -1,10 +1,15 @@
 import sys
 import os
-import time
 import webbrowser
 from django.core.management import execute_from_command_line
+import time
+import threading
+import webbrowser
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "website.settings")
+ip = "127.0.0.1"
+port = 8000
+url = f"http://{ip}:{port}"
 
 
 def resource_path(relative_path):
@@ -18,11 +23,17 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-def run_server():
-    execute_from_command_line(
+def start_server():
+   execute_from_command_line(
         ["manage.py", "runserver", "--noreload", "--insecure"])
-    os.system("start http://127.0.0.1:8000")
 
 
-if __name__ == "__main__":
-    run_server()
+if __name__ == '__main__':
+    threading.Thread(target=start_server).start()
+    webbrowser.open_new(url)
+
+    while True:
+        try:
+            time.sleep(1)
+        except KeyboardInterrupt:
+            sys.exit(0)

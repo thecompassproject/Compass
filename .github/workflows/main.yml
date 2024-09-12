@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Exe
         run: |
-          .\build-exe.bat
+          .\build_exe.bat
 
       - name: Create a ZIP file
         run: Compress-Archive -Path dist/compass/* -Destination compass.zip
