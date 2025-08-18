@@ -18,19 +18,11 @@ We have developed an Open Source GUI for Teaching and Implementing Computational
 Before the user can run the application, a few things need to be set up:
 
 1. Install a text editor like VS Code, Sublime etc.
-2. Install Gnuplot
-3. Install Python
-4. Install C++
-5. Install Microsoft Build Tools
-
-## Getting Started
-
-The following instructions will help the user to get started with the project for the first time:
-
-1. Open Command Prompt/Terminal and navigate to a path of your choice.
-2. Run the following command to get the project code from the GitHub:” git clone https://github.com/samreetdhillon/IAPT.git”.
-3. Run “cd IAPT”.
-4. If you are using a Windows machine, then run “setup.bat” command to setup the project. For Linux/Mac machines, run “source setup.sh command to set up the project.
+2. Install Gnuplot (https://sourceforge.net/projects/gnuplot/files/gnuplot/)
+3. Install Python (https://www.python.org/downloads/)
+4. Install C++ (https://visualstudio.microsoft.com/vs/features/cplusplus/)
+5. Install Microsoft Build Tools (https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+(Don't forget to add all these files to System Environment Varibles)
 
 ## How to use this application?
 
@@ -56,6 +48,17 @@ The following instructions will help the user to get started with the project fo
 10. To edit code online, Click on <b>Edit Online: OnlineGDB</b> button. To edit code offline, Click on <b>Edit Offline: CodeBlocks</b> button.
 
 11. Paste the code in the editor. Practice the exercises given within the incomplete code and test the results.
+
+
+
+## Getting Started (For Developers)
+
+The following instructions will help the user to get started with the project for the first time:
+
+1. Open Command Prompt/Terminal and navigate to a path of your choice.
+2. Run the following command to get the project code from the GitHub:” git clone https://github.com/samreetdhillon/IAPT.git”.
+3. Run “cd IAPT”.
+4. If you are using a Windows machine, then run “setup.bat” command to setup the project. For Linux/Mac machines, run “source setup.sh command to set up the project.
 
 ## Authors
 
