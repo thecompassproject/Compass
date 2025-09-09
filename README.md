@@ -17,11 +17,11 @@ We have developed an Open Source GUI for Teaching and Implementing Computational
 
 Before the user can run the application, a few things need to be set up:
 
-1. Install a text editor like VS Code, Sublime etc.
-2. Install Gnuplot (https://sourceforge.net/projects/gnuplot/files/gnuplot/)
-3. Install Python (https://www.python.org/downloads/)
-4. Install C++ (https://visualstudio.microsoft.com/vs/features/cplusplus/)
-5. Install Microsoft Build Tools (https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+1. **Install a text editor like VS Code, Sublime etc.**
+2. [Install Gnuplot](https://sourceforge.net/projects/gnuplot/files/gnuplot/)
+3. [Install Python](https://www.python.org/downloads/)
+4. [Install C++](https://visualstudio.microsoft.com/vs/features/cplusplus/)
+5. [Install Microsoft Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 (Don't forget to add all these files to System Environment Varibles)
 
 ## How to use this application?
