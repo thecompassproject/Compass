@@ -5,7 +5,7 @@ cppyy==3.1.2
 cppyy-backend==1.15.2
 cppyy-cling==6.30.0
 CPyCppyy==1.12.16
-Django==4.2.13
+Django==4.2.26
 django-bootstrap-v5==1.0.11
 importlib_metadata==8.2.0
 macholib==1.16.3
